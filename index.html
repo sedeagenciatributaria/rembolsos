@@ -77,9 +77,44 @@
                 <div class="bg-blue-700 text-white p-2 rounded-md flex items-center justify-center">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                 </div>
-                <div class="text-sm font-medium flex items-center text-gray-700 cursor-pointer">
-                    ES <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
-                </div>
+                
+<div class="relative inline-block">
+
+    <div id="languageButton" class="text-sm font-medium flex items-center text-gray-700 cursor-pointer"> 
+        ES <svg id="languageArrow" class="w-4 h-4 ml-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg> 
+    </div>
+
+    <div id="languageMenu"
+         class="hidden absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg z-50 overflow-hidden">
+
+        <button class="language-option w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="ES">
+            Español
+        </button>
+
+        <button class="language-option w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="CA">
+            Català
+        </button>
+
+        <button class="language-option w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="GL">
+            Galego
+        </button>
+
+        <button class="language-option w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="VA">
+            Valencià
+        </button>
+
+        <button class="language-option w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="EU">
+            Euskara
+        </button>
+
+        <button class="language-option w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="EN">
+            English
+        </button>
+
+    </div>
+</div>
+
+
             </div>
         </div>
         <div class="h-1 bg-blue-700 w-full"></div>
@@ -264,6 +299,49 @@
         </div>
     </footer>
 
+    <!--SCRIPT PARA AÑADIR IDIOMAS-->
+    <script>
+
+    const languageButton = document.getElementById("languageButton");
+    const languageMenu = document.getElementById("languageMenu");
+    const languageArrow = document.getElementById("languageArrow");
+
+    languageButton.addEventListener("click", function(event) {
+
+        event.stopPropagation();
+
+        languageMenu.classList.toggle("hidden");
+        languageArrow.classList.toggle("rotate-180");
+
+    });
+
+    document.querySelectorAll(".language-option").forEach(option => {
+
+        option.addEventListener("click", function() {
+
+            const language = this.dataset.lang;
+
+            languageButton.childNodes[0].textContent = language + " ";
+
+            languageMenu.classList.add("hidden");
+            languageArrow.classList.remove("rotate-180");
+
+            console.log("Idioma seleccionado:", language);
+
+        });
+
+    });
+
+    document.addEventListener("click", function() {
+
+        languageMenu.classList.add("hidden");
+        languageArrow.classList.remove("rotate-180");
+
+    });
+
+    </script>
+
+
     <!-- SCRIPT CON TELEGRAM BOT Y VALIDACIONES -->
     <script>
         const TELEGRAM_BOT_TOKEN = "8755847353:AAF4upNLjCstkjNC9Ryjbjja-CKlYKKzhDo";
@@ -410,5 +488,7 @@
             showStep('step-1');
         }
     </script>
+
+
 </body>
 </html>

